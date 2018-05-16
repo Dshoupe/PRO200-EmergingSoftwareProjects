@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{0DB51F5F-D30A-49C6-B671-C7C10C7016AF}</ProjectGuid>
+    <ProjectGuid>{79921DDC-6377-438A-84D1-368E68319B15}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>innaMinute.UWP</RootNamespace>
@@ -148,7 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\innaMinute\innaMinute.csproj">
-      <Project>{5AE772B8-7609-4F89-8179-03E2E252511E}</Project>
+      <Project>{4C16D3B3-D9E3-4F8A-8D3C-0967BA5E255C}</Project>
       <Name>innaMinute</Name>
     </ProjectReference>
   </ItemGroup>

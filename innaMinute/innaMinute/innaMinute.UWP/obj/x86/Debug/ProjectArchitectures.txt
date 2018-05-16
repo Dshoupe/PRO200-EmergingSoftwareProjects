@@ -1,0 +1,1 @@
+C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.UWP\innaMinute.UWP.csproj;x86

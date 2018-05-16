@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="e5279570-b842-4c0c-9708-1f48f247eb82"
-    Publisher="CN=25c3a98e-e445-4151-9ef1-e2f5fdfdd1d0"
+    Name="14121add-f7bf-466c-964d-e5c4c9abf8df"
+    Publisher="CN=dfce7945-9663-4768-baf3-1e3146e41d5b"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>innaMinute.UWP</DisplayName>
-    <PublisherDisplayName>25c3a98e-e445-4151-9ef1-e2f5fdfdd1d0</PublisherDisplayName>
+    <PublisherDisplayName>dfce7945-9663-4768-baf3-1e3146e41d5b</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 

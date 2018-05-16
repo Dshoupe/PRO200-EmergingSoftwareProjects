@@ -623,11 +623,13 @@
         "build/netstandard2.0/Xamarin.Forms.props",
         "build/netstandard2.0/Xamarin.Forms.targets",
         "lib/MonoAndroid10/FormsViewGroup.dll",
+        "lib/MonoAndroid10/FormsViewGroup.dll.mdb",
         "lib/MonoAndroid10/FormsViewGroup.pdb",
         "lib/MonoAndroid10/Xamarin.Forms.Core.dll",
         "lib/MonoAndroid10/Xamarin.Forms.Core.pdb",
         "lib/MonoAndroid10/Xamarin.Forms.Core.xml",
         "lib/MonoAndroid10/Xamarin.Forms.Platform.Android.dll",
+        "lib/MonoAndroid10/Xamarin.Forms.Platform.Android.dll.mdb",
         "lib/MonoAndroid10/Xamarin.Forms.Platform.Android.pdb",
         "lib/MonoAndroid10/Xamarin.Forms.Platform.dll",
         "lib/MonoAndroid10/Xamarin.Forms.Xaml.dll",
@@ -753,11 +755,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dylan Shoupe\\Documents\\GitHub\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute.Android\\innaMinute.Android.csproj",
+      "projectUniqueName": "C:\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute.Android\\innaMinute.Android.csproj",
       "projectName": "innaMinute.Android",
-      "projectPath": "C:\\Users\\Dylan Shoupe\\Documents\\GitHub\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute.Android\\innaMinute.Android.csproj",
+      "projectPath": "C:\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute.Android\\innaMinute.Android.csproj",
       "packagesPath": "C:\\Users\\Dylan Shoupe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dylan Shoupe\\Documents\\GitHub\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute.Android\\obj\\",
+      "outputPath": "C:\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
@@ -774,8 +776,8 @@
       "frameworks": {
         "monoandroid81": {
           "projectReferences": {
-            "C:\\Users\\Dylan Shoupe\\Documents\\GitHub\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute\\innaMinute.csproj": {
-              "projectPath": "C:\\Users\\Dylan Shoupe\\Documents\\GitHub\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute\\innaMinute.csproj"
+            "C:\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute\\innaMinute.csproj": {
+              "projectPath": "C:\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute\\innaMinute.csproj"
             }
           }
         }
