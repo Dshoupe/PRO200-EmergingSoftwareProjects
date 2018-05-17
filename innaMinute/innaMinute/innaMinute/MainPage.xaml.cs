@@ -7,11 +7,21 @@ using Xamarin.Forms;
 
 namespace innaMinute
 {
-	public partial class MainPage : ContentPage
-	{
-		public MainPage()
-		{
-			InitializeComponent();
-		}
-	}
+				public partial class MainPage : ContentPage
+				{
+								public MainPage()
+								{
+												InitializeComponent();
+								}
+
+								private void CreateAccountBtn_Clicked(object sender, EventArgs e)
+								{
+
+								}
+
+								private void LoginBtn_Clicked(object sender, EventArgs e)
+								{
+												DisplayAlert("Test", $"{EmailEntry.Text} - {PasswordEntry.Text}", "Cancel");
+								}
+				}
 }
