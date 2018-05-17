@@ -98,6 +98,7 @@ C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.Android\obj\
 C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.Android\obj\Debug\android\assets\Xamarin.Forms.Core.pdb
 C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.pdb
 C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.Android\bin\Debug\innaMinute.Android.dll
+C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.Android\obj\Debug\linksrc\innaMinute.pdb
 C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.Android\obj\Debug\linksrc\innaMinute.Android.dll.mdb
 C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.Android\obj\Debug\linksrc\FormsViewGroup.dll.mdb
 C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.Android\obj\Debug\linksrc\Xamarin.Forms.Platform.Android.dll.mdb
