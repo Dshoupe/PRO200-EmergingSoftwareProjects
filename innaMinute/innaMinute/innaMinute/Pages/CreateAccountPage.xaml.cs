@@ -9,12 +9,22 @@ using Xamarin.Forms.Xaml;
 
 namespace innaMinute.Pages
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CreateAccountPage : ContentPage
-	{
-		public CreateAccountPage ()
-		{
-			InitializeComponent ();
-		}
-	}
+				[XamlCompilation(XamlCompilationOptions.Compile)]
+				public partial class CreateAccountPage : ContentPage
+				{
+								public CreateAccountPage()
+								{
+												InitializeComponent();
+								}
+
+								private void CreateAccountBtn_Clicked(object sender, EventArgs e)
+								{
+
+								}
+
+								private void PasswordEntry_TextChanged(object sender, TextChangedEventArgs e)
+								{
+
+								}
+				}
 }

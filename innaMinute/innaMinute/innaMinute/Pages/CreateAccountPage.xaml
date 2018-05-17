@@ -9,35 +9,40 @@
 															 FontFamily="cursive"
 															 FontSize="40"/>
 
-												<Label Text="First Name"
-															HorizontalOptions="Start"/>
-												<Entry x:Name="FNameEntry"/>
+												<ScrollView>
+																<StackLayout>
+																				<Label Text="First Name"
+																											HorizontalOptions="Start"/>
+																				<Entry x:Name="FNameEntry"/>
 
-												<Label Text="Last Name"
-															HorizontalOptions="Start"/>
-												<Entry x:Name="LNameEntry"/>
+																				<Label Text="Last Name"
+																											HorizontalOptions="Start"/>
+																				<Entry x:Name="LNameEntry"/>
 
-												<Label Text="Email"
-															HorizontalOptions="Start"/>
-												<Entry x:Name="EmailEntry"/>
+																				<Label Text="Email"
+																											HorizontalOptions="Start"/>
+																				<Entry x:Name="EmailEntry"/>
 
-												<Label Text="Phone"
-															HorizontalOptions="Start"/>
-												<Entry x:Name="PhoneEntry"/>
+																				<Label Text="Phone"
+																											HorizontalOptions="Start"/>
+																				<Entry x:Name="PhoneEntry"/>
 
-												<Label Text="Username"
-															HorizontalOptions="Start"/>
-												<Entry x:Name="UsernameEntry"/>
+																				<Label Text="Username"
+																											HorizontalOptions="Start"/>
+																				<Entry x:Name="UsernameEntry"/>
 
-												<Label Text="Password"
-															HorizontalOptions="Start"/>
-												<Entry x:Name="PasswordEntry"/>
+																				<Label Text="Password"
+																												HorizontalOptions="Start"/>
+																				<Entry x:Name="PasswordEntry"
+																											TextChanged="PasswordEntry_TextChanged"/>
 
-												<Label Text="Confirm Password"
-															HorizontalOptions="Start"/>
-												<Entry x:Name="CPasswordEntry"/>
+																				<Label Text="Confirm Password"
+																											HorizontalOptions="Start"/>
+																				<Entry x:Name="CPasswordEntry"/>
+																</StackLayout>
+												</ScrollView>
 
-												<Button x:Name="CreateAccountBtn" Text="Create Account"/>
+												<Button x:Name="CreateAccountBtn" Text="Create Account" Clicked="CreateAccountBtn_Clicked"/>
 								</StackLayout>
 				</ContentPage.Content>
 </ContentPage>
