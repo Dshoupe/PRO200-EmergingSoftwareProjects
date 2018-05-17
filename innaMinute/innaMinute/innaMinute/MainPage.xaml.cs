@@ -1,4 +1,5 @@
-﻿using System;
+﻿using innaMinute.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace innaMinute
 
 								private void CreateAccountBtn_Clicked(object sender, EventArgs e)
 								{
-
+												this.Navigation.PushAsync(new CreateAccountPage());
 								}
 
 								private void LoginBtn_Clicked(object sender, EventArgs e)

@@ -8,8 +8,7 @@
 								<Label Text="innaMinute" 
            HorizontalOptions="Center"
 															FontFamily="cursive"
-															FontSize="40"
-															Margin="0, 0, 0, 40"/>
+															FontSize="40"/>
 								<Label Text="Email"
 															HorizontalOptions="Start"
 															Margin="10, 0, -10, 0"/>
@@ -18,7 +17,7 @@
 															HorizontalOptions="Start"
 															Margin="10, 40, -10, 0"/>
 								<Entry IsPassword="True" x:Name="PasswordEntry"/>
-								<Button x:Name="LoginBtn" Text="Login" Clicked="LoginBtn_Clicked" Margin="0, 20, 0, 0 "/>
+								<Button x:Name="LoginBtn" Text="Login" Clicked="LoginBtn_Clicked" Margin="0, 10, 0, 0 "/>
 								<Button x:Name="CreateAccountBtn" Text="Create Account" Clicked="CreateAccountBtn_Clicked"/>
 				</StackLayout>
 </ContentPage> 
