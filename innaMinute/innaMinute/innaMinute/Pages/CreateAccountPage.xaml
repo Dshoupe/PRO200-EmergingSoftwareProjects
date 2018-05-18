@@ -4,22 +4,6 @@
              x:Class="innaMinute.Pages.CreateAccountPage">
     <ContentPage.Content>
         <StackLayout>
-												<Label Text="innaMinute" 
-           HorizontalOptions="Center"
-															FontFamily="cursive"
-															FontSize="40"/>
-												<Label Text="First Name"
-															HorizontalOptions="Start"
-															Margin="10, 0, -10, 0"/>
-												<Entry x:Name="EmailEntry"/>
-												<Label Text="Last Name"
-															HorizontalOptions="Start"
-															Margin="10, 0, -10, 0"/>
-												<Entry x:Name="EmailEntry"/>
-												<Label Text="Email"
-															HorizontalOptions="Start"
-															Margin="10, 0, -10, 0"/>
-												<Entry x:Name="EmailEntry"/>
-								</StackLayout>
+		</StackLayout>
     </ContentPage.Content>
 </ContentPage>
