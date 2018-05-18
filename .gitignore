@@ -2,7 +2,6 @@ bin
 obj
 classic_bin
 classic_obj
-*.csproj
 *.dll
 *.mdb
 *.exe
