@@ -7027,24 +7027,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Dylan Shoupe\\.nuget\\packages\\": {},
+    "C:\\Users\\KStringer\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute.UWP\\innaMinute.UWP.csproj",
+      "projectUniqueName": "C:\\P200IM\\innaMin\\innaMinute\\innaMinute\\innaMinute.UWP\\innaMinute.UWP.csproj",
       "projectName": "innaMinute.UWP",
-      "projectPath": "C:\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute.UWP\\innaMinute.UWP.csproj",
-      "packagesPath": "C:\\Users\\Dylan Shoupe\\.nuget\\packages\\",
-      "outputPath": "C:\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute.UWP\\obj\\",
+      "projectPath": "C:\\P200IM\\innaMin\\innaMinute\\innaMinute\\innaMinute.UWP\\innaMinute.UWP.csproj",
+      "packagesPath": "C:\\Users\\KStringer\\.nuget\\packages\\",
+      "outputPath": "C:\\P200IM\\innaMin\\innaMinute\\innaMinute\\innaMinute.UWP\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Dylan Shoupe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\KStringer\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7057,8 +7057,8 @@
       "frameworks": {
         "uap10.0.16299": {
           "projectReferences": {
-            "C:\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute\\innaMinute.csproj": {
-              "projectPath": "C:\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute\\innaMinute.csproj"
+            "C:\\P200IM\\innaMin\\innaMinute\\innaMinute\\innaMinute\\innaMinute.csproj": {
+              "projectPath": "C:\\P200IM\\innaMin\\innaMinute\\innaMinute\\innaMinute\\innaMinute.csproj"
             }
           }
         }

@@ -750,20 +750,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Dylan Shoupe\\.nuget\\packages\\": {}
+    "C:\\Users\\KStringer\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute.Android\\innaMinute.Android.csproj",
+      "projectUniqueName": "C:\\P200IM\\innaMin\\innaMinute\\innaMinute\\innaMinute.Android\\innaMinute.Android.csproj",
       "projectName": "innaMinute.Android",
-      "projectPath": "C:\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute.Android\\innaMinute.Android.csproj",
-      "packagesPath": "C:\\Users\\Dylan Shoupe\\.nuget\\packages\\",
-      "outputPath": "C:\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute.Android\\obj\\",
+      "projectPath": "C:\\P200IM\\innaMin\\innaMinute\\innaMinute\\innaMinute.Android\\innaMinute.Android.csproj",
+      "packagesPath": "C:\\Users\\KStringer\\.nuget\\packages\\",
+      "outputPath": "C:\\P200IM\\innaMin\\innaMinute\\innaMinute\\innaMinute.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\Dylan Shoupe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\KStringer\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -776,8 +776,8 @@
       "frameworks": {
         "monoandroid81": {
           "projectReferences": {
-            "C:\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute\\innaMinute.csproj": {
-              "projectPath": "C:\\PRO200-EmergingSoftwareProjects\\innaMinute\\innaMinute\\innaMinute\\innaMinute.csproj"
+            "C:\\P200IM\\innaMin\\innaMinute\\innaMinute\\innaMinute\\innaMinute.csproj": {
+              "projectPath": "C:\\P200IM\\innaMin\\innaMinute\\innaMinute\\innaMinute\\innaMinute.csproj"
             }
           }
         }
