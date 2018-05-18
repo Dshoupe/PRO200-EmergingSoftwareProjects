@@ -97,6 +97,7 @@ C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.Android\obj\
 C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.Android\obj\Debug\android\assets\System.Xml.pdb
 C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.Android\obj\Debug\android\assets\Xamarin.Forms.Core.pdb
 C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.pdb
+<<<<<<< HEAD
 C:\P200IM\innaMin\innaMinute\innaMinute\innaMinute.Android\bin\Debug\innaMinute.Android.dll
 C:\P200IM\innaMin\innaMinute\innaMinute\innaMinute.Android\bin\Debug\innaMinute.Android.pdb
 C:\P200IM\innaMin\innaMinute\innaMinute\innaMinute.Android\bin\Debug\com.companyname.apk
@@ -200,3 +201,10 @@ C:\P200IM\innaMin\innaMinute\innaMinute\innaMinute.Android\bin\Debug\innaMinute.
 C:\P200IM\innaMin\innaMinute\innaMinute\innaMinute.Android\obj\Debug\linksrc\innaMinute.Android.dll.mdb
 C:\P200IM\innaMin\innaMinute\innaMinute\innaMinute.Android\obj\Debug\linksrc\FormsViewGroup.dll.mdb
 C:\P200IM\innaMin\innaMinute\innaMinute\innaMinute.Android\obj\Debug\linksrc\Xamarin.Forms.Platform.Android.dll.mdb
+=======
+C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.Android\bin\Debug\innaMinute.Android.dll
+C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.Android\obj\Debug\linksrc\innaMinute.pdb
+C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.Android\obj\Debug\linksrc\innaMinute.Android.dll.mdb
+C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.Android\obj\Debug\linksrc\FormsViewGroup.dll.mdb
+C:\PRO200-EmergingSoftwareProjects\innaMinute\innaMinute\innaMinute.Android\obj\Debug\linksrc\Xamarin.Forms.Platform.Android.dll.mdb
+>>>>>>> e1da3e6e0d98196c97f97e5584575fa2ca8f57a4
