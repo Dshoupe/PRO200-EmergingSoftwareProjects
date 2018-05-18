@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="innaMinute.Pages.CreateAccountPage">
+				<ContentPage.Content>
+								<StackLayout>
+												<Label Text="innaMinute" 
+																HorizontalOptions="Center"
+															 FontFamily="cursive"
+															 FontSize="40"/>
+
+												<ScrollView>
+																<StackLayout>
+																				<Label Text="First Name"
+																											HorizontalOptions="Start"/>
+																				<Entry x:Name="FNameEntry"/>
+
+																				<Label Text="Last Name"
+																											HorizontalOptions="Start"/>
+																				<Entry x:Name="LNameEntry"/>
+
+																				<Label Text="Email"
+																											HorizontalOptions="Start"/>
+																				<Entry x:Name="EmailEntry"/>
+
+																				<Label Text="Phone"
+																											HorizontalOptions="Start"/>
+																				<Entry x:Name="PhoneEntry"/>
+
+																				<Label Text="Username"
+																											HorizontalOptions="Start"/>
+																				<Entry x:Name="UsernameEntry"/>
+
+																				<Label Text="Password"
+																												HorizontalOptions="Start"/>
+																				<Entry x:Name="PasswordEntry"
+																											TextChanged="PasswordEntry_TextChanged"/>
+
+																				<Label Text="Confirm Password"
+																											HorizontalOptions="Start"/>
+																				<Entry x:Name="CPasswordEntry"/>
+																</StackLayout>
+												</ScrollView>
+
+												<Button x:Name="CreateAccountBtn" Text="Create Account" Clicked="CreateAccountBtn_Clicked"/>
+								</StackLayout>
+				</ContentPage.Content>
+</ContentPage>
