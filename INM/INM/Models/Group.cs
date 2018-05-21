@@ -3,26 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace innaMinute.Droid.Models
+namespace INM.Models
 {
-				public class Group
-				{
-								public string GroupName { get; set; }
+	public class Group
+	{
+		public string GroupName { get; set; }
 
-								public List<Recording> GroupRecordings { get; set; }
+		public List<Recording> GroupRecordings { get; set; }
 
-								public int ID { get; set; }
+		public int ID { get; set; }
 
 
-								public void AddGroupMember(int contactId)
-								{
+		public void AddGroupMember(int contactId)
+		{
 
-								}
+		}
 
-								public void RemoveGroupMember(int id)
-								{
+		public void RemoveGroupMember(int id)
+		{
 
-								}
+		}
 
-				}
+	}
 }
