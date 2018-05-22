@@ -4,6 +4,8 @@ using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using INM.Models;
 using static INM.MainPage;
+using System.IO;
+using System.Collections.Generic;
 
 namespace INM.Database
 {
@@ -15,13 +17,15 @@ namespace INM.Database
 
         public UsersDataAccess()
         {
-            Database = DependencyService.Get<IDatabaseConnection>().DbConnection();
-            Database.CreateTable<User>();
-            this.Users = new ObservableCollection<User>(Database.Table<User>());
-            if (!Database.Table<User>().Any())
-            {
-                AddNewUser();
-            }
+            Database = DbConnection();
+        }
+
+        public SQLiteConnection DbConnection()
+        {
+            var dbName = "INMdb.db3";
+            var path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            path = Path.Combine(path,dbName);
+            return new SQLiteConnection(path);
         }
 
         private void AddNewUser()

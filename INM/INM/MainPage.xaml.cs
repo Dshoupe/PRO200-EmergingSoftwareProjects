@@ -29,7 +29,7 @@ namespace INM
             //DisplayAlert("Test", $"{EmailEntry.Text} - {PasswordEntry.Text}", "Cancel");
             if (EmailEntry.Text.ToLower() == "test" && PasswordEntry.Text == "123456")
             {
-                Navigation.PushAsync(new HomePage());
+                Navigation.PushAsync(new HomePage(new User()));
             }
         }
         public interface IDatabaseConnection
