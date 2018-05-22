@@ -2,15 +2,24 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="INM.Pages.HomePage">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem x:Name="ContactsToolbarItem" Order="Secondary" Text="Contacts"  Priority="1" Clicked="ContactsToolbarItem_Clicked"/>
+		<ToolbarItem x:Name="RecordingsToolbarItem" Order="Secondary" Text="Recordings"  Priority="2" />
+		<ToolbarItem x:Name="GroupsToolbarItem" Order="Secondary" Text="Groups"  Priority="3" />
+		<ToolbarItem x:Name="ProfileToolbarItem" Order="Secondary" Text="Profile"  Priority="4" />
+		<ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" />
+	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
-        <StackLayout>
+		<StackLayout>
             <Label Text="00:00:00"
+				   FontSize="40"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 			<Image x:Name="RecordButton"
 				Source="recordbutton.png"
 				   WidthRequest="50"
-				   HeightRequest="50">
+				   HeightRequest="50"
+				   Margin="0, 0, 0, 15">
 				<Image.GestureRecognizers>
 					<TapGestureRecognizer Tapped="RecordButton_Tapped"/>
 				</Image.GestureRecognizers>
