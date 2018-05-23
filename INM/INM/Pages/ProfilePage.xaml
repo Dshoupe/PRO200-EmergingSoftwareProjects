@@ -2,6 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="INM.Pages.ProfilePage">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem x:Name="ContactsToolbarItem" Order="Secondary" Text="Contacts"  Priority="4" Clicked="ContactsToolbarItem_Clicked"/>
+		<ToolbarItem x:Name="RecordingsToolbarItem" Order="Secondary" Text="Recordings"  Priority="2" Clicked="RecordingsToolbarItem_Clicked"/>
+		<ToolbarItem x:Name="GroupsToolbarItem" Order="Secondary" Text="Groups"  Priority="3" Clicked="GroupsToolbarItem_Clicked"/>
+		<ToolbarItem x:Name="HomeToolbarItem" Order="Secondary" Text="Home"  Priority="1" Clicked="HomeToolbarItem_Clicked"/>
+		<ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
+	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
 		<Grid x:Name="ProfilePageGrid">
 			<Grid.RowDefinitions>
@@ -9,9 +16,67 @@
 				<RowDefinition Height="4*"/>
 			</Grid.RowDefinitions>
 			<StackLayout>
-				<Label x:Name="FirstNameLabel"
-					Text="{Binding Path=FirstName}"
-                HorizontalOptions="CenterAndExpand" />
+				<StackLayout Orientation="Horizontal">
+					<Label x:Name="FirstNameLabel"
+					   Text="First Name: "
+					   FontSize="25"
+					   HorizontalTextAlignment="Start"	
+					   />
+					<Label x:Name="FirstNameContentLabel"
+					   Text="{Binding Path=FirstName}"
+					   FontSize="25"
+					   HorizontalOptions="CenterAndExpand" 
+					   />
+				</StackLayout>
+
+				<StackLayout Orientation="Horizontal">
+					<Label x:Name="LastNameLabel"
+					   Text="Last Name: "
+					   FontSize="25"
+					   HorizontalTextAlignment="Start"	 
+					   />
+					<Label x:Name="LastNameContentLabel"
+					   Text="{Binding Path=LastName}"
+					   FontSize="25"
+					   HorizontalOptions="CenterAndExpand" 
+					   />
+				</StackLayout>
+				<StackLayout Orientation="Horizontal">
+					<Label x:Name="EmailLabel"
+					   Text="Email: "
+					   FontSize="25"
+					   HorizontalTextAlignment="Start"	
+					   />
+					<Label x:Name="EmailContentLabel"
+					   Text="{Binding Path=Email}"
+					   FontSize="25"
+					   HorizontalOptions="CenterAndExpand" 
+					   />
+				</StackLayout>
+				<StackLayout Orientation="Horizontal">
+					<Label x:Name="PhoneNumberLabel"
+					   Text="Phone: "
+					   FontSize="25"	
+						HorizontalTextAlignment="Start"	
+					   />
+					<Label x:Name="PhoneNumberContentLabel"
+					   Text="{Binding Path=PhoneNumber}"
+					   FontSize="25"
+					   HorizontalOptions="CenterAndExpand" 
+					   />
+				</StackLayout>
+				<StackLayout Orientation="Horizontal">
+					<Label x:Name="UsernameLabel"
+					   Text="Username: "
+					   FontSize="25"
+					   HorizontalTextAlignment="Start"	 
+					   />
+					<Label x:Name="UsernameContentLabel"
+					   Text="{Binding Path=Username}"
+					   FontSize="25"
+					   HorizontalOptions="CenterAndExpand" 
+					   />
+				</StackLayout>
 			</StackLayout>
 
 		</Grid>

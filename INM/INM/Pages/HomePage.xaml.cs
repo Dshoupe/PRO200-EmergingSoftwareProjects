@@ -37,17 +37,17 @@ namespace INM.Pages
 
 		private void GroupsToolbarItem_Clicked(object sender, EventArgs e)
 		{
-
+			Navigation.PushAsync(new GroupsPage(user));
 		}
 
 		private void ProfileToolbarItem_Clicked(object sender, EventArgs e)
 		{
-
+			Navigation.PushAsync(new ProfilePage(user));
 		}
 
 		private void SignOutToolbarItem_Clicked(object sender, EventArgs e)
 		{
-
+			Navigation.PopToRootAsync();
 		}
 	}
 }

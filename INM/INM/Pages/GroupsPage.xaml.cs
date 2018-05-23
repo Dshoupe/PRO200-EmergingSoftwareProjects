@@ -39,27 +39,27 @@ namespace INM.Pages
 
 		private void HomeToolbarItem_Clicked(object sender, EventArgs e)
 		{
-
+			Navigation.PushAsync(new HomePage(user));
 		}
 
 		private void ContactsToolbarItem_Clicked(object sender, EventArgs e)
 		{
-
+			Navigation.PushAsync(new ContactsPage(user));
 		}
 
 		private void RecordingsToolbarItem_Clicked(object sender, EventArgs e)
 		{
-
+			Navigation.PushAsync(new RecordingsPage(user));
 		}
 
 		private void ProfileToolbarItem_Clicked(object sender, EventArgs e)
 		{
-
+			Navigation.PushAsync(new ProfilePage(user));
 		}
 
 		private void SignOutToolbarItem_Clicked(object sender, EventArgs e)
 		{
-
+			Navigation.PopToRootAsync();
 		}
 	}
 }

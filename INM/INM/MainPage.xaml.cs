@@ -27,9 +27,10 @@ namespace INM
         private void LoginBtn_Clicked(object sender, EventArgs e)
         {
             //DisplayAlert("Test", $"{EmailEntry.Text} - {PasswordEntry.Text}", "Cancel");
-            if (EmailEntry.Text.ToLower() == "test" && PasswordEntry.Text == "123456")
+			CurrentUser = new User() { FirstName = "TestFirstName", LastName = "TestLastName", ID = 1, Email = EmailEntry.Text, Groups = new List<Models.Group>(), PhoneNumber = "123-456-7890", Username = "TestUsername" };
+			if (EmailEntry.Text.ToLower() == "test" && PasswordEntry.Text == "123456")
             {
-                Navigation.PushAsync(new HomePage(new User()));
+                Navigation.PushAsync(new HomePage(CurrentUser));
             }
         }
         public interface IDatabaseConnection
