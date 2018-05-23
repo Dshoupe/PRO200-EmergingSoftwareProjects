@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>576</x>
+      <y>240</y>
+      <w>320</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>User
+-
+userId : int (PK-Identity) 
+userName : nvarchar(20)
+firstName : nvarchar(20)
+lastName : nvarchar(20)
+emailAddress : nvarchar(50)
+phoneNumber : nvarchar(11)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>216</x>
+      <y>400</y>
+      <w>208</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>AudioRecord
+-
+recordId : int (PK-Identity) 
+scriptId : int (FK-Transcript)
+groupId : int (FK-Group)
+audioData : bytes?
+dateCreated : datetime
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>144</x>
+      <y>552</y>
+      <w>304</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Transcript
+-
+scriptId : int (PK-Identity) 
+scriptText : nvarchar(string/nvarchar(x))</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>232</x>
+      <y>96</y>
+      <w>208</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Group
+-
+groupId : int (PK-Identity) 
+leadUserId : User (FK-User) 
+groupName : nvarchar(40)
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>192</x>
+      <y>240</y>
+      <w>296</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>Group_AudioRecord
+-
+group_audioId : (Composite PK)
+audioRecordId : int (FK-AudioRecrod)
+groupId : int (FK-Group) 
+isGroupAudioCreator : bit 
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>128</x>
+      <y>120</y>
+      <w>120</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;&gt;&gt;&gt;
+m1=*
+m2=*</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;10.0;10.0;240.0;80.0;240.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>152</x>
+      <y>280</y>
+      <w>80</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;&gt;&gt;&gt;
+m1=*
+m2=*</panel_attributes>
+    <additional_attributes>80.0;190.0;10.0;190.0;10.0;10.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>416</x>
+      <y>440</y>
+      <w>80</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>40.0;180.0;80.0;180.0;80.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>432</x>
+      <y>120</y>
+      <w>160</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;&gt;&gt;&gt;
+m1=*
+m2=*</panel_attributes>
+    <additional_attributes>180.0;60.0;60.0;60.0;60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>576</x>
+      <y>96</y>
+      <w>224</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>Group_User
+-
+group_user : (Composite PK)
+userId : int (FK-User)
+groupId : int (FK-Group)
+isUserGroupLeader : bit</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>512</x>
+      <y>120</y>
+      <w>80</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;&gt;&gt;&gt;
+m1=*
+m2=*</panel_attributes>
+    <additional_attributes>80.0;190.0;10.0;190.0;10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>576</x>
+      <y>496</y>
+      <w>208</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>User_User
+-
+userId : int (FK-User)
+contactId : int (FK-User)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>416</y>
+      <w>24</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;&gt;&gt;&gt;
+m1=*
+m2=*</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

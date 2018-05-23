@@ -1,8 +1,14 @@
-﻿using Android.Media;
+using Android.Media;
 using Java.IO;
 using Java.Lang;
 using System;
 using System.IO;
+using INM.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,13 +18,15 @@ namespace INM.Pages
 				public partial class HomePage : ContentPage
 				{
 								MediaRecorder recorder = null;
+								User user;
 								bool recordClicked = false;
 								bool playClicked = false;
-								public HomePage()
+								public HomePage(User user)
 								{
 												InitializeComponent();
+												this.user = user;
 								}
-								
+
 								private void RecordButton_Tapped(object sender, EventArgs e)
 								{
 												if (!recordClicked)
@@ -51,7 +59,7 @@ namespace INM.Pages
 
 								private void PlayTestBtn_Clicked(object sender, EventArgs e)
 								{
-												if(!recordClicked)
+												if (!recordClicked)
 												{
 																MediaPlayer mp = new MediaPlayer();
 																if (!playClicked)
@@ -73,6 +81,30 @@ namespace INM.Pages
 												{
 																DisplayAlert("Error", "Cannot play while recording", "Ok");
 												}
+								}
+
+								private void ContactsToolbarItem_Clicked(object sender, EventArgs e)
+								{
+												Navigation.PushAsync(new ContactsPage(user));
+								}
+
+								private void RecordingsToolbarItem_Clicked(object sender, EventArgs e)
+								{
+												Navigation.PushAsync(new RecordingsPage(user));
+								}
+
+								private void GroupsToolbarItem_Clicked(object sender, EventArgs e)
+								{
+
+								}
+
+								private void ProfileToolbarItem_Clicked(object sender, EventArgs e)
+								{
+
+								}
+
+								private void SignOutToolbarItem_Clicked(object sender, EventArgs e)
+								{
 								}
 				}
 }

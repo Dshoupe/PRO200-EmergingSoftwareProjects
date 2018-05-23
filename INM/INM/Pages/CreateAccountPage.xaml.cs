@@ -11,24 +11,26 @@ using Xamarin.Forms.Xaml;
 
 namespace INM.Pages
 {
-				[XamlCompilation(XamlCompilationOptions.Compile)]
-				public partial class CreateAccountPage : ContentPage
-				{
-								public CreateAccountPage()
-								{
-												InitializeComponent();
-								}
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class CreateAccountPage : ContentPage
+	{
+		User user;
+		public CreateAccountPage()
+		{
+			InitializeComponent();
+		}
 
-								private void CreateAccountBtn_Clicked(object sender, EventArgs e)
-								{
-												User user = new User() { FirstName = FNameEntry.Text, LastName = LNameEntry.Text, ID = 1, Contacts = new List<User>(), Email = EmailEntry.Text, Groups = new List<Models.Group>(), PhoneNumber = PhoneEntry.Text, Username = UsernameEntry.Text };
-												DisplayAlert("User Created", user.ToString(), "Ok");
-								}
+		private void CreateAccountBtn_Clicked(object sender, EventArgs e)
+		{
+			user = new User() { FirstName = FNameEntry.Text, LastName = LNameEntry.Text, ID = 1, Contacts = new List<User>(), Email = EmailEntry.Text, Groups = new List<Models.Group>(), PhoneNumber = PhoneEntry.Text, Username = UsernameEntry.Text };
+			DisplayAlert("User Created", user.ToString(), "Ok");
+			Navigation.PushAsync(new HomePage(user));
+		}
 
-								private void PasswordEntry_TextChanged(object sender, TextChangedEventArgs e)
-								{
-												//Regex regex = new Regex("[^0-9]+");
-												//e.Handled = regex.IsMatch(e.Text);
-								}
-				}
+		private void PasswordEntry_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			//Regex regex = new Regex("[^0-9]+");
+			//e.Handled = regex.IsMatch(e.Text);
+		}
+	}
 }

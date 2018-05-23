@@ -2,6 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="INM.Pages.HomePage">
+				<ContentPage.ToolbarItems>
+								<ToolbarItem x:Name="ContactsToolbarItem" Order="Secondary" Text="Contacts"  Priority="1" Clicked="ContactsToolbarItem_Clicked"/>
+								<ToolbarItem x:Name="RecordingsToolbarItem" Order="Secondary" Text="Recordings"  Priority="2" Clicked="RecordingsToolbarItem_Clicked"/>
+								<ToolbarItem x:Name="GroupsToolbarItem" Order="Secondary" Text="Groups"  Priority="3" Clicked="GroupsToolbarItem_Clicked"/>
+								<ToolbarItem x:Name="ProfileToolbarItem" Order="Secondary" Text="Profile"  Priority="4" Clicked="ProfileToolbarItem_Clicked"/>
+								<ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
+				</ContentPage.ToolbarItems>
 				<ContentPage.Content>
 								<StackLayout>
 												<Label Text="00:00:00"
