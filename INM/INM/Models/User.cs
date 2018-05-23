@@ -1,10 +1,13 @@
 ﻿using System;
+using SQLite;
+using System.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace INM.Models
 {
+    [Table("User")]
 	public class User
 	{
 		public List<User> Contacts { get; set; }
@@ -12,8 +15,10 @@ namespace INM.Models
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
 		public List<Group> Groups { get; set; }
+        [PrimaryKey, AutoIncrement]
 		public int ID { get; set; }
 		public string PhoneNumber { get; set; }
+        [NotNull, MaxLength(20)]
 		public string Username { get; set; }
 		public List<Recording> Recordings { get; set; }
 
