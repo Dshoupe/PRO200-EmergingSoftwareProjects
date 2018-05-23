@@ -2,19 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="INM.Pages.HomePage">
-	<ContentPage.Content>
-        <StackLayout>
-            <Label Text="00:00:00"
+				<ContentPage.Content>
+								<StackLayout>
+												<Label Text="00:00:00"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-			<Image x:Name="RecordButton"
-				Source="recordbutton.png"
-				   WidthRequest="50"
-				   HeightRequest="50">
-				<Image.GestureRecognizers>
-					<TapGestureRecognizer Tapped="RecordButton_Tapped"/>
-				</Image.GestureRecognizers>
-			</Image>
-		</StackLayout>
-    </ContentPage.Content>
+												<Button x:Name="PlayTestBtn" Text="Play Last Recording" Clicked="PlayTestBtn_Clicked"/>
+												<Image x:Name="RecordButton"
+																Source="recordbutton.png"
+															 WidthRequest="50"
+																HeightRequest="50">
+																<Image.GestureRecognizers>
+																				<TapGestureRecognizer Tapped="RecordButton_Tapped"/>
+																</Image.GestureRecognizers>
+												</Image>
+								</StackLayout>
+				</ContentPage.Content>
 </ContentPage>
