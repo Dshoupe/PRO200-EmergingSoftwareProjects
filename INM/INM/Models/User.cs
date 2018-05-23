@@ -15,7 +15,14 @@ namespace INM.Models
 		public int ID { get; set; }
 		public string PhoneNumber { get; set; }
 		public string Username { get; set; }
+		public List<Recording> Recordings { get; set; }
 
+		public User()
+		{
+			Contacts = new List<User>();
+			Groups = new List<Group>();
+			Recordings = new List<Recording>();
+		}
 		public void UpdateUser()
 		{
 

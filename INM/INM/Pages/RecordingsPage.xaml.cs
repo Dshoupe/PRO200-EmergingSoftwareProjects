@@ -11,18 +11,32 @@ using Xamarin.Forms.Xaml;
 namespace INM.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class HomePage : ContentPage
+	public partial class RecordingsPage : ContentPage
 	{
 		User user;
-		public HomePage (User user)
+		public RecordingsPage (User user)
 		{
 			InitializeComponent ();
 			this.user = user;
+			DisplayRecordings();
 		}
 
-		private void RecordButton_Tapped(object sender, EventArgs e)
+		private void DisplayRecordings()
 		{
-			
+			if(user.Recordings.Count == 0)
+			{
+				Label noRecordingsLabel = new Label
+				{
+					Text = "You have no records at this time",
+					FontSize = 10.0,
+					HorizontalTextAlignment = TextAlignment.Center
+				};
+				RecordingsStackLayout.Children.Add(noRecordingsLabel);
+			}
+			else
+			{
+
+			}
 		}
 
 		private void ContactsToolbarItem_Clicked(object sender, EventArgs e)
@@ -30,9 +44,9 @@ namespace INM.Pages
 			Navigation.PushAsync(new ContactsPage(user));
 		}
 
-		private void RecordingsToolbarItem_Clicked(object sender, EventArgs e)
+		private void HomeToolbarItem_Clicked(object sender, EventArgs e)
 		{
-			Navigation.PushAsync(new RecordingsPage(user));
+			Navigation.PushAsync(new HomePage(user));
 		}
 
 		private void GroupsToolbarItem_Clicked(object sender, EventArgs e)
