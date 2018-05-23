@@ -23,8 +23,7 @@ namespace INM.Database
         public SQLiteConnection DbConnection()
         {
             var dbName = "INMdb.db3";
-            var path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-            path = Path.Combine(path,dbName);
+            var path = Path.Combine("..\\..\\..\\Database\\inmDB.sqlite", dbName);
             return new SQLiteConnection(path);
         }
 

@@ -13,7 +13,7 @@ namespace INM
     public partial class MainPage : ContentPage
     {
         public User CurrentUser { get; set; }
-        public UsersDataAccess UDA { get; set; } = new UsersDataAccess();
+        //public UsersDataAccess UDA { get; set; } = new UsersDataAccess();
         public MainPage()
         {
             InitializeComponent();
