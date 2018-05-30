@@ -11,10 +11,10 @@
 				</ContentPage.ToolbarItems>
 				<ContentPage.Content>
 								<StackLayout>
-												<Label Text="00:00:00"
+												<Label x:Name="timeLabel" Text=""
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-												<Button x:Name="PlayTestBtn" Text="Play Last Recording" Clicked="PlayTestBtn_Clicked"/>
+                HorizontalOptions="CenterAndExpand"/>
+												<!--<Button x:Name="PlayTestBtn" Text="Play Last Recording" Clicked="PlayTestBtn_Clicked"/>-->
 												<Image x:Name="RecordButton"
 																Source="recordbutton.png"
 															 WidthRequest="50"
@@ -26,3 +26,4 @@
 								</StackLayout>
 				</ContentPage.Content>
 </ContentPage>
+<!--"{Binding Mode=Default, Path=Time}"-->
