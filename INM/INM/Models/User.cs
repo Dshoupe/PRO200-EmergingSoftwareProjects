@@ -1,41 +1,40 @@
-﻿using System;
-using SQLite;
-using System.ComponentModel;
+﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace INM.Models
 {
-    [Table("User")]
+	[Table("User")]
 	public class User
 	{
-		public List<User> Contacts { get; set; }
-		public string Email { get; set; }
-		public string FirstName { get; set; }
-		public string LastName { get; set; }
-		public List<Group> Groups { get; set; }
-        [PrimaryKey, AutoIncrement]
+		[PrimaryKey, AutoIncrement]
 		public int ID { get; set; }
-		public string PhoneNumber { get; set; }
-        [NotNull, MaxLength(20)]
+
 		public string Username { get; set; }
-		public List<Recording> Recordings { get; set; }
 
-		public User()
-		{
-			Contacts = new List<User>();
-			Groups = new List<Group>();
-			Recordings = new List<Recording>();
-		}
-		public void UpdateUser()
-		{
+		public string Email { get; set; }
 
-		}
+		public string FirstName { get; set; }
+
+		public string LastName { get; set; }
+
+		public string PhoneNumber { get; set; }
+		
+		public string Password { get; set; }
+
+		[ManyToMany(typeof(UserUser))]
+		public List<User> Contacts { get; set; }
+
+		[OneToMany]
+		public List<Group> Groups { get; set; }
+
+		[OneToMany]
+		public List<AudioRecord> Recordings { get; set; }
 
 		public override string ToString()
 		{
-			return $"{FirstName} {LastName} - {Username} - {Email} - {PhoneNumber}";
+			return $"ID={ID}\nUser name={Username}\nEmail={Email}\n" +
+				$"Full name={FirstName} {LastName}\nPhone={PhoneNumber}";
 		}
 	}
 }
