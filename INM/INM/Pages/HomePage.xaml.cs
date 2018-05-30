@@ -55,10 +55,12 @@ namespace INM.Pages
 																recorder.Prepare();
 																recorder.Start();
 																recordClicked = true;
+																RecordButton.Source = "stopbuttonimage.png";
 																//Timer.Start();
 												}
 												else
 												{
+																RecordButton.Source = "recordbutton.png";
 																//Timer.Stop();
 																recorder.Stop();
 																recorder.Release();
