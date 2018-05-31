@@ -51,7 +51,7 @@ namespace INM.Pages
 																recorder.SetAudioSource(AudioSource.Mic);
 																recorder.SetOutputFormat(OutputFormat.Mpeg4);
 																recorder.SetAudioEncoder(AudioEncoder.AmrNb);
-																recorder.SetOutputFile(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath + $"/{DateTime.Now.ToLongDateString()}-{DateTime.Now.ToShortTimeString()}.mp3");
+																recorder.SetOutputFile(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath + $"/{DateTime.Now.ToString("MM-dd-yyyy-HH;mm;ss")}.mp3");
 																recorder.Prepare();
 																recorder.Start();
 																recordClicked = true;

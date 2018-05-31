@@ -2,19 +2,21 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="INM.Pages.RecordingsPage">
-	<ContentPage.ToolbarItems>
-		<ToolbarItem x:Name="ContactsToolbarItem" Order="Secondary" Text="Contacts"  Priority="2" Clicked="ContactsToolbarItem_Clicked"/>
-		<ToolbarItem x:Name="HomeToolbarItem" Order="Secondary" Text="Home"  Priority="1" Clicked="HomeToolbarItem_Clicked"/>
-		<ToolbarItem x:Name="GroupsToolbarItem" Order="Secondary" Text="Groups"  Priority="3" Clicked="GroupsToolbarItem_Clicked"/>
-		<ToolbarItem x:Name="ProfileToolbarItem" Order="Secondary" Text="Profile"  Priority="4" Clicked="ProfileToolbarItem_Clicked"/>
-		<ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
-	</ContentPage.ToolbarItems>
-	<ContentPage.Content>
-        <StackLayout x:Name="RecordingsStackLayout">
-			<Label Text="Recordings"
-				   FontSize="30"
+				<ContentPage.ToolbarItems>
+								<ToolbarItem x:Name="ContactsToolbarItem" Order="Secondary" Text="Contacts"  Priority="2" Clicked="ContactsToolbarItem_Clicked"/>
+								<ToolbarItem x:Name="HomeToolbarItem" Order="Secondary" Text="Home"  Priority="1" Clicked="HomeToolbarItem_Clicked"/>
+								<ToolbarItem x:Name="GroupsToolbarItem" Order="Secondary" Text="Groups"  Priority="3" Clicked="GroupsToolbarItem_Clicked"/>
+								<ToolbarItem x:Name="ProfileToolbarItem" Order="Secondary" Text="Profile"  Priority="4" Clicked="ProfileToolbarItem_Clicked"/>
+								<ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
+				</ContentPage.ToolbarItems>
+				<ContentPage.Content>
+								<StackLayout x:Name="RecordingsStackLayout">
+												<Label Text="Recordings"
+																FontSize="30"
                 HorizontalOptions="CenterAndExpand" />
-			
-		</StackLayout>
-    </ContentPage.Content>
+												<!--<Label x:Name="RecordingsLabel"
+																			FontSize="10"
+																			HorizontalOptions="CenterAndExpand"/>-->
+								</StackLayout>
+				</ContentPage.Content>
 </ContentPage>
