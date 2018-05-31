@@ -10,11 +10,14 @@
 		<ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
-        <StackLayout x:Name="ContactpageStackLayout">
-            <Label Text="Contacts" 
+		<StackLayout x:Name="ContactpageStackLayout">
+			<Label Text="Contacts" 
 				   HorizontalTextAlignment="Center"
 				   FontSize="30"/>
-			
-        </StackLayout>
+			<Button x:Name="AddNewContactButton"
+					Text="Add New Contact"
+					Clicked="AddNewContactButton_Clicked"
+					/>
+		</StackLayout>
     </ContentPage.Content>
 </ContentPage>

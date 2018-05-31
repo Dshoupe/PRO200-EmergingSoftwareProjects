@@ -29,7 +29,7 @@ namespace INM.Pages
 				noContactsLabel.Text = "You currently have no contacts.. Get some friends";
 				noContactsLabel.HorizontalTextAlignment = TextAlignment.Center;
 				noContactsLabel.FontSize = 10.0;
-				ContactpageStackLayout.Children.Add(noContactsLabel);
+				ContactpageStackLayout.Children.Insert(1, noContactsLabel);
 			}
 			//Get the user's contacts and display them to the user if the list is not empty
 
@@ -59,6 +59,11 @@ namespace INM.Pages
 		private void SignOutToolbarItem_Clicked(object sender, EventArgs e)
 		{
 			Navigation.PopToRootAsync();
+		}
+
+		private void AddNewContactButton_Clicked(object sender, EventArgs e)
+		{
+			Navigation.PushAsync(new AddContactPage(user));
 		}
 	}
 }
