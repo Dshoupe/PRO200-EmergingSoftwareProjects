@@ -1,28 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 namespace INM.Models
 {
+	[Table("Group")]
 	public class Group
 	{
-		public string GroupName { get; set; }
-
-		public List<Recording> GroupRecordings { get; set; }
-
+		[PrimaryKey, AutoIncrement]
 		public int ID { get; set; }
 
+		[ForeignKey(typeof(User))]
+		public int LeadUserId { get; set; }
 
-		public void AddGroupMember(int contactId)
-		{
-
-		}
-
-		public void RemoveGroupMember(int id)
-		{
-
-		}
-
+		public string GroupName { get; set; }
 	}
 }
