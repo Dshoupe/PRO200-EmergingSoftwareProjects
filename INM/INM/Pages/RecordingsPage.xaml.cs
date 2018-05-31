@@ -25,6 +25,7 @@ namespace INM.Pages
 
 								private void DisplayRecordings()
 								{
+												RecordingsStackLayout.Children.Clear();
 												//if (recordings.Length == 0)
 												//{
 												//				Label noRecordingsLabel = new Label
@@ -40,21 +41,42 @@ namespace INM.Pages
 												try
 												{
 																string[] recordings = Directory.GetFiles(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "*.mp3");
+																ScrollView sv = new ScrollView();
+																StackLayout top = new StackLayout();
 																foreach (var recording in recordings)
 																{
 																				string[] splitPath = recording.Split('/');
 																				string path = splitPath[4].Substring(0, splitPath[4].Length - 4);
+
+																				StackLayout sl = new StackLayout();
+																				sl.Orientation = StackOrientation.Horizontal;
+
 																				Frame f = new Frame();
 																				f.BorderColor = Color.Silver;
+
 																				Label l = new Label();
 																				l.Text = path;
 																				l.FontSize = 10;
+																				l.Margin = new Thickness(0, 0, 10, 0);
 																				TapGestureRecognizer g = new TapGestureRecognizer();
 																				g.Tapped += G_Tapped;
 																				l.GestureRecognizers.Add(g);
-																				f.Content = l;
-																				RecordingsStackLayout.Children.Add(f);
+
+																				Xamarin.Forms.Image i = new Xamarin.Forms.Image() { WidthRequest = 20, HeightRequest = 20 };
+																				i.Source = "redX.png";
+																				i.ClassId = path;
+																				TapGestureRecognizer g2 = new TapGestureRecognizer();
+																				g2.Tapped += G2_Tapped;
+																				i.Margin = 0;
+																				i.GestureRecognizers.Add(g2);
+
+																				sl.Children.Add(l);
+																				sl.Children.Add(i);
+																				f.Content = sl;
+																				top.Children.Add(f);
 																}
+																sv.Content = top;
+																RecordingsStackLayout.Children.Add(sv);
 												}
 												catch (Exception)
 												{
@@ -64,8 +86,16 @@ namespace INM.Pages
 																l.Text = "There are no Recordings yet!";
 																l.FontSize = 10;
 																f.Content = l;
+																RecordingsStackLayout.Children.Add(f);
 												}
 												//}
+								}
+
+								private void G2_Tapped(object sender, EventArgs e)
+								{
+												Xamarin.Forms.Image i = (Xamarin.Forms.Image)sender;
+												File.Delete($"{Android.OS.Environment.ExternalStorageDirectory.AbsolutePath}/{i.ClassId}.mp3");
+												DisplayRecordings();
 								}
 
 								MediaPlayer mp = new MediaPlayer();
