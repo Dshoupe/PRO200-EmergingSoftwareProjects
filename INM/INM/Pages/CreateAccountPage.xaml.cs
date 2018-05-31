@@ -12,7 +12,6 @@ namespace INM.Pages
 		{
 			InitializeComponent();			
 		}
-
 		/// <summary>
 		/// Called when the page is rendered
 		/// </summary>
@@ -59,16 +58,16 @@ namespace INM.Pages
 					{
 						// if a user already exists with the given email
 						if (ae.ParamName == "Models.User.Email")
-						{             
+						{
 							// complain to user and re-direct back
-							this.EmailEntry.TextColor = System.Drawing.Color.Red;
+							this.EmailEntry.TextColor = Color.Red;
 							DisplayAlert("User Creation Error", "A user already exists with that Email", "Okay");
 						}
 						// if a user already exists with the given username
 						else if (ae.ParamName == "Models.User.UserName")
 						{
 							// complain to user and re-direct back
-							this.UsernameEntry.TextColor = System.Drawing.Color.Red;
+							this.UsernameEntry.TextColor = Color.Red;
 							DisplayAlert("User Creation Error", "A user already exists with that User Name", "Okay");
 						}
 					}				
