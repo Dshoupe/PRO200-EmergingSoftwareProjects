@@ -37,22 +37,33 @@ namespace INM.Pages
 												//}
 												//else
 												//{
-
-												string[] recordings = Directory.GetFiles(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "*.mp3");
-												foreach (var recording in recordings)
+												try
 												{
-																string[] splitPath = recording.Split('/');
-																string path = splitPath[4].Substring(0, splitPath[4].Length - 4);
+																string[] recordings = Directory.GetFiles(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "*.mp3");
+																foreach (var recording in recordings)
+																{
+																				string[] splitPath = recording.Split('/');
+																				string path = splitPath[4].Substring(0, splitPath[4].Length - 4);
+																				Frame f = new Frame();
+																				f.BorderColor = Color.Silver;
+																				Label l = new Label();
+																				l.Text = path;
+																				l.FontSize = 10;
+																				TapGestureRecognizer g = new TapGestureRecognizer();
+																				g.Tapped += G_Tapped;
+																				l.GestureRecognizers.Add(g);
+																				f.Content = l;
+																				RecordingsStackLayout.Children.Add(f);
+																}
+												}
+												catch (Exception)
+												{
 																Frame f = new Frame();
 																f.BorderColor = Color.Silver;
 																Label l = new Label();
-																l.Text = path;
+																l.Text = "There are no Recordings yet!";
 																l.FontSize = 10;
-																TapGestureRecognizer g = new TapGestureRecognizer();
-																g.Tapped += G_Tapped;
-																l.GestureRecognizers.Add(g);
 																f.Content = l;
-																RecordingsStackLayout.Children.Add(f);
 												}
 												//}
 								}
