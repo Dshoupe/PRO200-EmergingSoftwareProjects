@@ -24,8 +24,8 @@ namespace INM
         {
 			using (var sq = new Persistence.SQLiteDb())
 			{
-				var authdUser = sq.FindUserByEmail(EmailEntry.Text);
-				authdUser = authdUser ?? sq.FindUserByUsername(EmailEntry.Text);			
+				var authdUser = sq.GetUserByEmail(EmailEntry.Text);
+				authdUser = authdUser ?? sq.GetUserByUsername(EmailEntry.Text);			
 
 				if (authdUser != null)
 				{
