@@ -19,6 +19,8 @@ namespace INM.Pages
 								bool recordClicked = false;
 								bool playClicked = false;
 								Time time = new Time();
+								string test = "";
+								IDisposable listener = null;
 
 								public HomePage(User user)
 								{
@@ -26,8 +28,6 @@ namespace INM.Pages
 												this.user = user;
 								}
 
-								IDisposable listener = null;
-								string test = "test";
 								private void RecordButton_Tapped(object sender, EventArgs e)
 								{
 												if (!recordClicked)
@@ -53,24 +53,11 @@ namespace INM.Pages
 																{
 																				test += phrase;
 																});
-
 																Device.StartTimer(new TimeSpan(0, 0, 1), () => { time.Seconds++; timeLabel.Text = time.ToString(); return recordClicked; });
 												}
 												else
 												{
 																StopRecording();
-
-																//var a = new System.Globalization.CultureInfo("en-US");
-																//SpeechRecognitionEngine recognizer = new SpeechRecognitionEngine(a);
-
-																//DictationGrammar dg = new DictationGrammar();
-																//recognizer.LoadGrammar(dg);
-
-																//recognizer.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(recognizer_SpeechRecognized);
-
-																//recognizer.SetInputToWaveFile(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath + "/test.wav");
-
-																//recognizer.RecognizeAsync();
 												}
 								}
 

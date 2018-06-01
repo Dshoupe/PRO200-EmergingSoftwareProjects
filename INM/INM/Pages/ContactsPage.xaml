@@ -18,6 +18,7 @@
 					Text="Add New Contact"
 					Clicked="AddNewContactButton_Clicked"
 					/>
-		</StackLayout>
+        </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>
