@@ -7,20 +7,15 @@ namespace INM.Models
 	public class AudioRecord
 	{
 		[PrimaryKey, AutoIncrement]
-		public int ID { get; }
+		public int ID { get; set; }
 
 		[ForeignKey(typeof(User))]
-		public int CreatorId { get; }
+		public int CreatorId { get; set; }
 
 		[ForeignKey(typeof(Transcript))]
 		public int Transcript { get; set; }
 
 		public byte[] AudioClip { get; set; }
 
-
-		public AudioRecord(int creatorUserId)
-		{
-			CreatorId = creatorUserId;
-		}
 	}
 }
