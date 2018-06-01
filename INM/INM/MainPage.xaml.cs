@@ -10,13 +10,7 @@ namespace INM
 
 	    public MainPage()
 	    {
-            try
-            {
-		        InitializeComponent();		
-            }catch(Exception e)
-            {
-                string s = e.Message;
-            }
+		    InitializeComponent();			
 			//DependencyService.Get<Persistence.SQLiteDb>().GetConnection();						
 		}
 

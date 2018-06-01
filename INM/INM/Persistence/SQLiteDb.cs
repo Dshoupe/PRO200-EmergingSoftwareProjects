@@ -114,8 +114,8 @@ namespace INM.Persistence
 
 		public bool UpdateUser()
 		{
-            throw new System.NotImplementedException();
-        }
+			throw new System.NotImplementedException();
+		}
 
 
 		public User FindUserByUsername(string userName)
