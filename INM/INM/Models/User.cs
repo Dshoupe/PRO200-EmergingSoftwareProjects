@@ -22,13 +22,13 @@ namespace INM.Models
 		
 		public string Password { get; set; }
 
-		[ManyToMany(typeof(UserUser))]
+		[ManyToMany(typeof(UserUser), CascadeOperations = CascadeOperation.All)]
 		public List<User> Contacts { get; set; } = new List<User>();
 
-		[OneToMany]
+		[OneToMany(CascadeOperations = CascadeOperation.All)]
 		public List<Group> Groups { get; set; } = new List<Group>();
 
-		[OneToMany]
+		[OneToMany(CascadeOperations = CascadeOperation.All)]
 		public List<AudioRecord> Recordings { get; set; } = new List<AudioRecord>();
 
 		public override string ToString()

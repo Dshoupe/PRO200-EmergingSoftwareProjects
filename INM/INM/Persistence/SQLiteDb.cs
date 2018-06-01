@@ -8,7 +8,7 @@ namespace INM.Persistence
 {
 	public class SQLiteDb : ISQLiteDb, System.IDisposable
 	{
-		public static SQLite.SQLiteConnection _DbConnection { get; set; } = null;
+		private static SQLite.SQLiteConnection _DbConnection { get; set; } = null;
 
 		public SQLiteDb()
 		{
@@ -20,7 +20,8 @@ namespace INM.Persistence
 			string databaseFilePath = System.IO.Path.Combine(applicationFolderPath, "inmDB.sqlite");
 			_DbConnection = new SQLite.SQLiteConnection(databaseFilePath);
 
-			// create db tables
+			#region CreateDbTables
+
 			_DbConnection.CreateTable<User>(); // users
 			_DbConnection.CreateTable<UserUser>(); // contacts
 			_DbConnection.CreateTable<Group>(); // groups
@@ -28,28 +29,68 @@ namespace INM.Persistence
 			_DbConnection.CreateTable<GroupAudioRecord>(); // groups with audio records
 			_DbConnection.CreateTable<Transcript>(); // audio text
 			_DbConnection.CreateTable<AudioRecord>(); // audio data
+			#endregion
 		}
 
-		public bool CreateContact(User fromUser, User toUser)
-		{
-			throw new System.NotImplementedException();
-		}
 
 		public bool CreateGroup(Group newGroup)
 		{
-			throw new System.NotImplementedException();
+			if (!CheckGroupExists(newGroup.GroupName))
+			{
+				try
+				{
+					_DbConnection.Insert(newGroup, typeof(Group));
+				}
+				catch (System.InvalidOperationException ioe)
+				{
+					System.Console.WriteLine(ioe.StackTrace);
+					return false;
+				}
+			}
+
+			return true;
 		}
 
 		public bool CreateRecording(AudioRecord newAudio)
 		{
-			throw new System.NotImplementedException();
+			try
+			{
+				_DbConnection.Insert(newAudio, typeof(AudioRecord));
+				return true;
+			}
+			catch (System.InvalidOperationException ioe)
+			{
+				System.Console.WriteLine(ioe.StackTrace);
+				return false;
+			}
+		}
+
+		public bool CreateContact(int lowerUserId, int upperUserId)
+		{
+			if (GetContact(lowerUserId, upperUserId) == null)
+			{
+				UserUser newCont = new UserUser(lowerUserId, upperUserId);
+
+				try
+				{
+					_DbConnection.Insert(newCont, typeof(UserUser));
+					return true;
+				}
+				catch (System.InvalidOperationException ioe)
+				{
+					System.Console.WriteLine(ioe.StackTrace);
+					return false;
+				}
+			}
+
+			return true;
 		}
 
 		public bool CreateUser(User newUser)
 		{
 			// check if user exists
-			var userByEmail = FindUserByEmail(newUser.Email);
-			var userByUsername = FindUserByUsername(newUser.Username);
+			var userByEmail = GetUserByEmail(newUser.Email);
+			var userByUsername = GetUserByUsername(newUser.Username);
 
 			// if a user is not already found
 			if (userByEmail == null && userByUsername == null)
@@ -82,14 +123,83 @@ namespace INM.Persistence
 			
 		}
 
-		public void Dispose()
+		
+		public bool DeleteContact(int lowerUserId, int upperUserId)
 		{
-			System.GC.SuppressFinalize(this);			
-		}		
+			try
+			{
+				var delCont = GetContact(lowerUserId, upperUserId);
+				_DbConnection.Delete<UserUser>(delCont.ID);
+				return true;
+			}
+			catch (System.InvalidOperationException ioe)
+			{
+				System.Console.WriteLine(ioe.StackTrace);
+				return false;
+			}
+		}
+
+		public bool DeleteGroup(int groupId)
+		{
+			try
+			{
+				_DbConnection.Delete<Group>(groupId);
+				return true;
+			}
+			catch (System.InvalidOperationException ioe)
+			{
+				System.Console.WriteLine(ioe.StackTrace);
+				return false;
+			}
+		}
+
+
+		public bool UpdateGroup(Group groupToUpdate)
+		{
+			try
+			{
+				_DbConnection.Update(groupToUpdate);
+				return true;
+			}
+			catch (System.InvalidOperationException ioe)
+			{
+				System.Console.WriteLine(ioe.StackTrace);
+				return false;
+			}
+		}
+
+		public bool UpdateRecording(AudioRecord recordingToUpdate)
+		{
+			try
+			{
+				_DbConnection.Update(recordingToUpdate);
+				return true;
+			}
+			catch (System.InvalidOperationException ioe)
+			{
+				System.Console.WriteLine(ioe.StackTrace);
+				return false;
+			}
+		}
+
+		public bool UpdateUser(User userToUpdate)
+		{
+			try
+			{			
+				_DbConnection.Update(userToUpdate);
+				return true;
+			}
+			catch (System.InvalidOperationException ioe)
+			{
+				System.Console.WriteLine(ioe.StackTrace);
+				return false;
+			}
+		}
+
 
 		public List<Group> GetGroups()
 		{
-			throw new System.NotImplementedException();
+			return _DbConnection.Table<Group>().Select(u => u).ToList();
 		}
 
 		public List<User> GetUsers()
@@ -97,28 +207,7 @@ namespace INM.Persistence
 			return _DbConnection.Table<User>().Select(u => u).ToList();
 		}
 
-		public bool UpdateContact()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public bool UpdateGroup()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public bool UpdateRecording()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public bool UpdateUser()
-		{
-			throw new System.NotImplementedException();
-		}
-
-
-		public User FindUserByUsername(string userName)
+		public User GetUserByUsername(string userName)
 		{
 			try
 			{
@@ -126,11 +215,12 @@ namespace INM.Persistence
 			}
 			catch (System.InvalidOperationException ioe)
 			{
+				System.Console.WriteLine(ioe.StackTrace);
 				return null;
 			}
 		}
 
-		public User FindUserByEmail(string email)
+		public User GetUserByEmail(string email)
 		{
 			try
 			{
@@ -138,13 +228,53 @@ namespace INM.Persistence
 			}
 			catch (System.InvalidOperationException ioe)
 			{
+				System.Console.WriteLine(ioe.StackTrace);
 				return null;
 			}		
 		}
 
-		public void GetConnection()
+		public User GetUserById(int userId)
 		{
-			throw new System.NotImplementedException();
+			try
+			{
+				return _DbConnection.Table<User>().First(x => x.ID == userId);
+			}
+			catch (System.InvalidOperationException ioe)
+			{
+				System.Console.WriteLine(ioe.StackTrace);
+				return null;
+			}
 		}
+
+		public UserUser GetContact(int lowerUserId, int upperUserId)
+		{
+			int lowerId = lowerUserId < upperUserId ? lowerUserId : upperUserId;
+			int upperId = upperUserId > lowerUserId ? upperUserId : lowerUserId;
+
+			try
+			{
+				var contacts = _DbConnection.Table<UserUser>().Where(x => x.PrimaryUserId == lowerId).ToList();
+				return contacts.Find(x => x.ContactUserId == upperId);
+			}
+			catch (System.InvalidOperationException ioe)
+			{
+				System.Console.WriteLine(ioe.StackTrace);
+				return null;
+			}			
+		}
+
+
+		private bool CheckGroupExists(string groupName)
+		{
+			var grp = _DbConnection.Table<Group>().FirstOrDefault(x => x.GroupName == groupName);
+
+			return grp != null;
+		}
+
+		public void Dispose()
+		{
+			System.GC.SuppressFinalize(this);
+		}
+
 	}
 }
