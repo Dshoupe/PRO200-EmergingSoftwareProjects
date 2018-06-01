@@ -7,6 +7,7 @@ using System.Timers;
 using System.Speech.Recognition;
 using System.Text;
 using System.Diagnostics;
+using Plugin.SpeechRecognition;
 
 namespace INM.Pages
 {
@@ -25,6 +26,8 @@ namespace INM.Pages
 												this.user = user;
 								}
 
+								IDisposable listener = null;
+								string test = "test";
 								private void RecordButton_Tapped(object sender, EventArgs e)
 								{
 												if (!recordClicked)
@@ -46,6 +49,13 @@ namespace INM.Pages
 																recorder.Start();
 																recordClicked = true;
 																RecordButton.Source = "stopbuttonimage.png";
+																listener = CrossSpeechRecognition.Current.ContinuousDictation().Subscribe(phrase =>
+																{
+																				test += phrase;
+																});
+
+
+
 																Device.StartTimer(new TimeSpan(0, 0, 1), () => { time.Seconds++; timeLabel.Text = time.ToString(); return recordClicked; });
 												}
 												else
@@ -56,6 +66,8 @@ namespace INM.Pages
 																recorder = null;
 																recordClicked = false;
 																time.Reset();
+																listener.Dispose();
+																testLabel.Text = test;
 
 																//var a = new System.Globalization.CultureInfo("en-US");
 																//SpeechRecognitionEngine recognizer = new SpeechRecognitionEngine(a);

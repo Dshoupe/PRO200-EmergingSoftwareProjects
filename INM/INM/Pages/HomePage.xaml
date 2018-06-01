@@ -11,6 +11,9 @@
 				</ContentPage.ToolbarItems>
 				<ContentPage.Content>
 								<StackLayout>
+												<Label x:Name="testLabel" Text=""
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"/>
 												<Label x:Name="timeLabel" Text=""
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"/>
