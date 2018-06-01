@@ -14,7 +14,7 @@ namespace INM.Pages
 				[XamlCompilation(XamlCompilationOptions.Compile)]
 				public partial class HomePage : ContentPage
 				{
-								MediaRecorder recorder = null;
+								MediaRecorder recorder = new MediaRecorder();
 								User user;
 								bool recordClicked = false;
 								bool playClicked = false;
@@ -54,20 +54,11 @@ namespace INM.Pages
 																				test += phrase;
 																});
 
-
-
 																Device.StartTimer(new TimeSpan(0, 0, 1), () => { time.Seconds++; timeLabel.Text = time.ToString(); return recordClicked; });
 												}
 												else
 												{
-																RecordButton.Source = "recordbutton.png";
-																recorder.Stop();
-																recorder.Release();
-																recorder = null;
-																recordClicked = false;
-																time.Reset();
-																listener.Dispose();
-																testLabel.Text = test;
+																StopRecording();
 
 																//var a = new System.Globalization.CultureInfo("en-US");
 																//SpeechRecognitionEngine recognizer = new SpeechRecognitionEngine(a);
@@ -81,6 +72,17 @@ namespace INM.Pages
 
 																//recognizer.RecognizeAsync();
 												}
+								}
+
+								private void StopRecording()
+								{
+												RecordButton.Source = "recordbutton.png";
+												recorder.Stop();
+												recorder.Release();
+												recordClicked = false;
+												time.Reset();
+												listener.Dispose();
+												testLabel.Text = test;
 								}
 
 								private void PlayTestBtn_Clicked(object sender, EventArgs e)
@@ -111,26 +113,31 @@ namespace INM.Pages
 
 								private void ContactsToolbarItem_Clicked(object sender, EventArgs e)
 								{
+												StopRecording();
 												Navigation.PushAsync(new ContactsPage(user));
 								}
 
 								private void RecordingsToolbarItem_Clicked(object sender, EventArgs e)
 								{
+												StopRecording();
 												Navigation.PushAsync(new RecordingsPage(user));
 								}
 
 								private void GroupsToolbarItem_Clicked(object sender, EventArgs e)
 								{
+												StopRecording();
 												Navigation.PushAsync(new GroupsPage(user));
 								}
 
 								private void ProfileToolbarItem_Clicked(object sender, EventArgs e)
 								{
+												StopRecording();
 												Navigation.PushAsync(new ProfilePage(user));
 								}
 
 								private void SignOutToolbarItem_Clicked(object sender, EventArgs e)
 								{
+												StopRecording();
 												Navigation.PopToRootAsync();
 								}
 				}
