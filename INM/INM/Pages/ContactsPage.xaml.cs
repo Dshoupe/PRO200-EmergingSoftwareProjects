@@ -21,7 +21,7 @@ namespace INM.Pages
 			DisplayContacts();
 		}
 
-		private void DisplayContacts()
+        private void DisplayContacts()
 		{
 			if(user.Contacts.Count == 0)
 			{
@@ -30,7 +30,18 @@ namespace INM.Pages
 				noContactsLabel.HorizontalTextAlignment = TextAlignment.Center;
 				noContactsLabel.FontSize = 10.0;
 				ContactpageStackLayout.Children.Insert(1, noContactsLabel);
-			}
+            }
+            else
+            {
+                foreach (User u in user.Contacts)
+                {
+                    Label l = new Label
+                    {
+                        Text = $"{u.FirstName} {u.LastName}"
+                    };
+                    ContactpageStackLayout.Children.Insert(1, l);
+                }
+            }
 			//Get the user's contacts and display them to the user if the list is not empty
 
 
