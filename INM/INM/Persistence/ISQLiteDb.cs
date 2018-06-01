@@ -5,18 +5,23 @@ namespace INM.Persistence
 {
 	public interface ISQLiteDb
     {
-	    void GetConnection();
-		bool CreateUser(User newUser);
 		bool CreateGroup(Group newGroup);
 		bool CreateRecording(AudioRecord newAudio);
-		bool CreateContact(User fromUser, User toUser);
+		bool CreateContact(int lowerUserId, int upperUserId);
+		bool CreateUser(User newUser);
 
-		bool UpdateRecording();
-		bool UpdateContact();
-		bool UpdateUser();
-		bool UpdateGroup();
+		bool DeleteContact(int lowerUserId, int upperUserId);
+		bool DeleteGroup(int groupId);
+
+		bool UpdateGroup(Group groupToUpdate);
+		bool UpdateRecording(AudioRecord recordingToUpdate);		
+		bool UpdateUser(User userToUpdate);
+
 		List<User> GetUsers();
 		List<Group> GetGroups();
-		
+		User GetUserByUsername(string userName);
+		User GetUserByEmail(string email);
+		User GetUserById(int userId);
+		UserUser GetContact(int lowerUserId, int upperUserId);
     }
 }

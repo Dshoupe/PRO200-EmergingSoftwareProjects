@@ -6,6 +6,7 @@ using Xamarin.Forms.Xaml;
 using System.Timers;
 using System.Speech.Recognition;
 using System.Text;
+using System.Diagnostics;
 
 namespace INM.Pages
 {
@@ -16,23 +17,12 @@ namespace INM.Pages
 								User user;
 								bool recordClicked = false;
 								bool playClicked = false;
-								public Time Time { get; set; } = new Time();
-								public Timer Timer { get; set; }
-								StringBuilder test = new StringBuilder();
+								Time time = new Time();
 
 								public HomePage(User user)
 								{
 												InitializeComponent();
 												this.user = user;
-												//Timer = new Timer();
-												//Timer.Interval = 1000;
-												//Timer.AutoReset = true;
-												//timeLabel.Text = $"{Time}";
-								}
-
-								void recognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
-								{
-												test.Append(e.Result.Text);
 								}
 
 								private void RecordButton_Tapped(object sender, EventArgs e)
@@ -56,16 +46,16 @@ namespace INM.Pages
 																recorder.Start();
 																recordClicked = true;
 																RecordButton.Source = "stopbuttonimage.png";
-																//Timer.Start();
+																Device.StartTimer(new TimeSpan(0, 0, 1), () => { time.Seconds++; timeLabel.Text = time.ToString(); return recordClicked; });
 												}
 												else
 												{
 																RecordButton.Source = "recordbutton.png";
-																//Timer.Stop();
 																recorder.Stop();
 																recorder.Release();
 																recorder = null;
 																recordClicked = false;
+																time.Reset();
 
 																//var a = new System.Globalization.CultureInfo("en-US");
 																//SpeechRecognitionEngine recognizer = new SpeechRecognitionEngine(a);
@@ -78,8 +68,6 @@ namespace INM.Pages
 																//recognizer.SetInputToWaveFile(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath + "/test.wav");
 
 																//recognizer.RecognizeAsync();
-
-																timeLabel.Text = test.ToString();
 												}
 								}
 
