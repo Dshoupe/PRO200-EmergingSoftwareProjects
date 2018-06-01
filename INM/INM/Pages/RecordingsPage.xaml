@@ -10,13 +10,14 @@
 								<ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
 				</ContentPage.ToolbarItems>
 				<ContentPage.Content>
-								<StackLayout x:Name="RecordingsStackLayout">
-												<Label Text="Recordings"
+								<StackLayout>
+												<Label Text="New Name"/>
+												<Entry x:Name="EditEntry"/>
+												<StackLayout x:Name="RecordingsStackLayout">
+																<Label Text="Recordings"
 																FontSize="30"
                 HorizontalOptions="CenterAndExpand" />
-												<!--<Label x:Name="RecordingsLabel"
-																			FontSize="10"
-																			HorizontalOptions="CenterAndExpand"/>-->
+												</StackLayout>
 								</StackLayout>
 				</ContentPage.Content>
 </ContentPage>

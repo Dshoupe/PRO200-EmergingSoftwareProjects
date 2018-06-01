@@ -10,6 +10,7 @@
 			<Button x:Name="SearchButton"
 					Text="Search"
 					Clicked="SearchButton_Clicked"/>
-		</StackLayout>
+            <StackLayout x:Name="ContactList"/>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
