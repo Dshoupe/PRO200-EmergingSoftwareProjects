@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,18 +25,6 @@ namespace INM.Pages
 								private void DisplayRecordings()
 								{
 												RecordingsStackLayout.Children.Clear();
-												//if (recordings.Length == 0)
-												//{
-												//				Label noRecordingsLabel = new Label
-												//				{
-												//								Text = "You have no records at this time",
-												//								FontSize = 10.0,
-												//								HorizontalTextAlignment = TextAlignment.Center
-												//				};
-												//				RecordingsStackLayout.Children.Add(noRecordingsLabel);
-												//}
-												//else
-												//{
 												try
 												{
 																string[] recordings = Directory.GetFiles(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "*.mp3");
@@ -48,29 +35,44 @@ namespace INM.Pages
 																				string[] splitPath = recording.Split('/');
 																				string path = splitPath[4].Substring(0, splitPath[4].Length - 4);
 
-																				StackLayout sl = new StackLayout();
-																				sl.Orientation = StackOrientation.Horizontal;
+																				StackLayout sl = new StackLayout
+																				{
+																								Orientation = StackOrientation.Horizontal
+																				};
 
-																				Frame f = new Frame();
-																				f.BorderColor = Color.Silver;
+																				Frame f = new Frame
+																				{
+																								BorderColor = Color.Silver
+																				};
 
-																				Label l = new Label();
-																				l.Text = path;
-																				l.FontSize = 10;
-																				l.Margin = new Thickness(0, 0, 10, 0);
+																				Label l = new Label
+																				{
+																								Text = path,
+																								FontSize = 10,
+																								Margin = new Thickness(0, 0, 10, 0)
+																				};
 																				TapGestureRecognizer g = new TapGestureRecognizer();
-																				g.Tapped += G_Tapped;
+																				g.Tapped += PlayRecording;
 																				l.GestureRecognizers.Add(g);
 
 																				Xamarin.Forms.Image i = new Xamarin.Forms.Image() { WidthRequest = 20, HeightRequest = 20 };
 																				i.Source = "redX.png";
 																				i.ClassId = path;
 																				TapGestureRecognizer g2 = new TapGestureRecognizer();
-																				g2.Tapped += G2_Tapped;
+																				g2.Tapped += DeleteRecording;
 																				i.Margin = 0;
 																				i.GestureRecognizers.Add(g2);
 
+																				Label l2 = new Label();
+																				TapGestureRecognizer g3 = new TapGestureRecognizer();
+																				l2.GestureRecognizers.Add(g3);
+																				l2.Text = "Edit Recording";
+																				l2.FontSize = 10;
+																				l2.ClassId = path;
+
+																				g3.Tapped += ChangeRecordingName;
 																				sl.Children.Add(l);
+																				sl.Children.Add(l2);
 																				sl.Children.Add(i);
 																				f.Content = sl;
 																				top.Children.Add(f);
@@ -80,18 +82,43 @@ namespace INM.Pages
 												}
 												catch (Exception)
 												{
-																Frame f = new Frame();
-																f.BorderColor = Color.Silver;
-																Label l = new Label();
-																l.Text = "There are no Recordings yet!";
-																l.FontSize = 10;
+																RecordingsStackLayout.Children.Clear();
+																Frame f = new Frame
+																{
+																				BorderColor = Color.Silver
+																};
+																Label l = new Label
+																{
+																				Text = "There are no Recordings yet!",
+																				FontSize = 10
+																};
 																f.Content = l;
 																RecordingsStackLayout.Children.Add(f);
 												}
-												//}
 								}
 
-								private void G2_Tapped(object sender, EventArgs e)
+								private void ChangeRecordingName(object sender, EventArgs e)
+								{
+												if (string.IsNullOrEmpty(EditEntry.Text) || EditEntry.Text.Contains(' '))
+												{
+																DisplayAlert("Error", "Invalid Name", "Ok");
+												}
+												else
+												{
+																try
+																{
+																				Label l = (Label)sender;
+																				File.Move($"{Android.OS.Environment.ExternalStorageDirectory.AbsolutePath}/{l.ClassId}.mp3", $"{Android.OS.Environment.ExternalStorageDirectory.AbsolutePath}/{EditEntry.Text}.mp3");
+																				DisplayRecordings();
+																}
+																catch (Exception)
+																{
+																				DisplayAlert("Error", "Another recording already has that name", "Ok");
+																}
+												}
+								}
+
+								private void DeleteRecording(object sender, EventArgs e)
 								{
 												Xamarin.Forms.Image i = (Xamarin.Forms.Image)sender;
 												File.Delete($"{Android.OS.Environment.ExternalStorageDirectory.AbsolutePath}/{i.ClassId}.mp3");
@@ -99,7 +126,7 @@ namespace INM.Pages
 								}
 
 								MediaPlayer mp = new MediaPlayer();
-								private void G_Tapped(object sender, EventArgs e)
+								private void PlayRecording(object sender, EventArgs e)
 								{
 												Label l = (Label)sender;
 												if (!mp.IsPlaying)

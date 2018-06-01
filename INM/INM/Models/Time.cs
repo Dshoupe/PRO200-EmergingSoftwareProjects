@@ -1,18 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Timers;
 
 namespace INM.Models
 {
-    public class Time
-    {
+				public class Time
+				{
+
+								public void Reset()
+								{
+												Seconds = 0;
+												Minutes = 0;
+												Hours = 0;
+								}
+
 								private int seconds;
 
 								public int Seconds
 								{
 												get { return seconds; }
-												set { seconds = value;
-																if (seconds >= 60 )
+												set
+												{
+																seconds = value;
+																if (seconds >= 60)
 																{
 																				Minutes++;
 																				seconds -= 60;
@@ -25,7 +36,9 @@ namespace INM.Models
 								public int Minutes
 								{
 												get { return minutes; }
-												set { minutes = value;
+												set
+												{
+																minutes = value;
 																if (minutes >= 60)
 																{
 																				Hours++;
@@ -38,7 +51,14 @@ namespace INM.Models
 
 								public override string ToString()
 								{
-												return $"{Hours}:{Minutes}:{Seconds}";
+												if (seconds == 0 && minutes == 0 && Hours == 0)
+												{
+																return "0:0:0";
+												}
+												else
+												{
+																return $"{Hours}:{Minutes}:{Seconds}";
+												}
 								}
 				}
 }
