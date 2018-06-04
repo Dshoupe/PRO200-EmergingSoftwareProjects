@@ -1,8 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="INM.Pages.AddContactPage">
+             x:Class="INM.Pages.AddContactPage"
+			 BackgroundColor="Snow">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem x:Name="HomeToolbarItem" Order="Secondary" Text="Home"  Priority="1" Clicked="HomeToolbarItem_Clicked"/>
+		<ToolbarItem x:Name="RecordingsToolbarItem" Order="Secondary" Text="Recordings"  Priority="2" Clicked="RecordingsToolbarItem_Clicked"/>
+		<ToolbarItem x:Name="GroupsToolbarItem" Order="Secondary" Text="Groups"  Priority="3" Clicked="GroupsToolbarItem_Clicked"/>
+		<ToolbarItem x:Name="ProfileToolbarItem" Order="Secondary" Text="Profile"  Priority="4" Clicked="ProfileToolbarItem_Clicked"/>
+		<ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
+	</ContentPage.ToolbarItems>
     <ContentPage.Content>
+		
 		<StackLayout>
 			<Entry x:Name="SearchBarEntry" 
 				   Text="Search for people"
@@ -11,7 +20,8 @@
 				   />
 			<Button x:Name="SearchButton"
 					Text="Search"
-					Clicked="SearchButton_Clicked"/>
+					Clicked="SearchButton_Clicked"
+					BackgroundColor="#D7CABD"/>
             <StackLayout x:Name="ContactList"/>
         </StackLayout>
     </ContentPage.Content>

@@ -17,7 +17,6 @@ namespace INM.Models
 
 		public byte[] AudioClip { get; set; }
 
-
         public AudioRecord() { }
 		public AudioRecord(int creatorUserId)
 		{

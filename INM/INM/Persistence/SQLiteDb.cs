@@ -3,7 +3,6 @@ using INM.Models;
 using System.Linq;
 using System.Security.Cryptography;
 
-//[assembly: Xamarin.Forms.Dependency(typeof(INM.Persistence.SQLiteDb))]
 namespace INM.Persistence
 {
     public class SQLiteDb : ISQLiteDb, System.IDisposable

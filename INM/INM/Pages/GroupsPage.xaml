@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="INM.Pages.GroupsPage">
+             x:Class="INM.Pages.GroupsPage"
+			 BackgroundColor="Snow">
 	<ContentPage.ToolbarItems>
 		<ToolbarItem x:Name="ContactsToolbarItem" Order="Secondary" Text="Contacts"  Priority="3" Clicked="ContactsToolbarItem_Clicked"/>
 		<ToolbarItem x:Name="RecordingsToolbarItem" Order="Secondary" Text="Recordings"  Priority="2" Clicked="RecordingsToolbarItem_Clicked"/>
@@ -12,9 +13,12 @@
 	<ContentPage.Content>
         <StackLayout x:Name="GroupsStackLayout">
 			<Label Text="Groups"
-                HorizontalOptions="CenterAndExpand" />
-            <StackLayout x:Name="groupPane"/>
-            <Button Text="Add group" x:Name="groupButton" Clicked="groupButton_Clicked"/>
-        </StackLayout>
+                HorizontalOptions="CenterAndExpand" 
+				   FontSize="50"/>
+			<Button x:Name="CreateGroupButton"
+					Text="Create New Group"
+					BackgroundColor="#D7CABD"
+					Clicked="CreateGroupButton_Clicked"/>
+		</StackLayout>
     </ContentPage.Content>
 </ContentPage>

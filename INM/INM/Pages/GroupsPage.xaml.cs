@@ -34,7 +34,7 @@ namespace INM.Pages
 					Text = "You have currently have no groups",
 					FontSize = 10.0
 				};
-				groupPane.Children.Add(noGroupsLabel);
+                GroupsStackLayout.Children.Add(noGroupsLabel);
 			}
 			else
 			{
@@ -44,7 +44,7 @@ namespace INM.Pages
                     {
                         Text = g.GroupName
                     };
-                    groupPane.Children.Add(l);
+                    GroupsStackLayout.Children.Add(l);
                 }
             }
 		}
@@ -73,19 +73,23 @@ namespace INM.Pages
 		{
 			Navigation.PopToRootAsync();
 		}
+        //private void groupButton_Clicked(object sender, EventArgs e)
+        //{
+        //    using (var sq = new Persistence.SQLiteDb())
+        //    {
+        //        Group tempGroup = new Group
+        //        {
+        //            GroupName = "Test Group",
+        //            LeadUserId = user.ID
+        //        };
+        //        sq.CreateGroup(tempGroup);
+        //        user.Groups = sq.GetUserGroups(user.ID);
+        //    }
+        //}
+    
+		private void CreateGroupButton_Clicked(object sender, EventArgs e)
+		{
 
-        private void groupButton_Clicked(object sender, EventArgs e)
-        {
-            using (var sq = new Persistence.SQLiteDb())
-            {
-                Group tempGroup = new Group
-                {
-                    GroupName = "Test Group",
-                    LeadUserId = user.ID
-                };
-                sq.CreateGroup(tempGroup);
-                user.Groups = sq.GetUserGroups(user.ID);
-            }
-        }
-    }
+		}
+	}
 }
