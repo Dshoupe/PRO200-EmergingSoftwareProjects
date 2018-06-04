@@ -98,10 +98,6 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Users\kmurphy\Desktop\speechrecognition-master\speechrecognition-master\Plugin.SpeechRecognition\Plugin.SpeechRecognition.csproj">
-      <Project>{d8393bb1-70e9-40de-a363-67a6441aa4e1}</Project>
-      <Name>Plugin.SpeechRecognition</Name>
-    </ProjectReference>
     <ProjectReference Include="..\INM\INM.csproj">
       <Project>{41A2FDF6-0D9F-4921-96E9-3C0760A1766E}</Project>
       <Name>INM</Name>

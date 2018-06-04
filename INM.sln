@@ -7,16 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INM.Android", "INM\INM.Andr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "INM", "INM\INM\INM.csproj", "{8613109A-9DDE-425C-AC45-8C10BACF7E90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.SpeechRecognition.Android", "..\Users\kmurphy\Desktop\speechrecognition-master\speechrecognition-master\Plugin.SpeechRecognition.Android\Plugin.SpeechRecognition.Android.csproj", "{4E1DFA5B-2147-40C3-BC37-CC5E879BED9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.SpeechRecognition", "INM\Plugin.SpeechRecognition\Plugin.SpeechRecognition.csproj", "{30B48FA5-EEAF-4781-BE32-D43D66619CE9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.SpeechRecognition.Abstractions", "..\Users\kmurphy\Desktop\speechrecognition-master\speechrecognition-master\Plugin.SpeechRecognition.Abstractions\Plugin.SpeechRecognition.Abstractions.csproj", "{689DFD2F-2BAA-43E8-A045-1E10BD47B5A9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.SpeechRecognition", "..\Users\kmurphy\Desktop\speechrecognition-master\speechrecognition-master\Plugin.SpeechRecognition\Plugin.SpeechRecognition.csproj", "{D8393BB1-70E9-40DE-A363-67A6441AA4E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.SpeechRecognition.Abstractions", "INM\Plugin.SpeechRecognition.Abstractions\Plugin.SpeechRecognition.Abstractions.csproj", "{1B82473A-61CC-487A-88BD-B201F1FCD156}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		..\Users\kmurphy\Desktop\speechrecognition-master\speechrecognition-master\Plugin.SpeechRecognition.Shared\Plugin.SpeechRecognition.Shared.projitems*{4e1dfa5b-2147-40c3-bc37-cc5e879bed9a}*SharedItemsImports = 4
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -34,18 +29,14 @@ Global
 		{8613109A-9DDE-425C-AC45-8C10BACF7E90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8613109A-9DDE-425C-AC45-8C10BACF7E90}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8613109A-9DDE-425C-AC45-8C10BACF7E90}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{4E1DFA5B-2147-40C3-BC37-CC5E879BED9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E1DFA5B-2147-40C3-BC37-CC5E879BED9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E1DFA5B-2147-40C3-BC37-CC5E879BED9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E1DFA5B-2147-40C3-BC37-CC5E879BED9A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{689DFD2F-2BAA-43E8-A045-1E10BD47B5A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{689DFD2F-2BAA-43E8-A045-1E10BD47B5A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{689DFD2F-2BAA-43E8-A045-1E10BD47B5A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{689DFD2F-2BAA-43E8-A045-1E10BD47B5A9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D8393BB1-70E9-40DE-A363-67A6441AA4E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8393BB1-70E9-40DE-A363-67A6441AA4E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8393BB1-70E9-40DE-A363-67A6441AA4E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8393BB1-70E9-40DE-A363-67A6441AA4E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30B48FA5-EEAF-4781-BE32-D43D66619CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30B48FA5-EEAF-4781-BE32-D43D66619CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30B48FA5-EEAF-4781-BE32-D43D66619CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30B48FA5-EEAF-4781-BE32-D43D66619CE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B82473A-61CC-487A-88BD-B201F1FCD156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B82473A-61CC-487A-88BD-B201F1FCD156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B82473A-61CC-487A-88BD-B201F1FCD156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B82473A-61CC-487A-88BD-B201F1FCD156}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
