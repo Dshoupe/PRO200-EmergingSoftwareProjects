@@ -61,5 +61,10 @@ namespace INM.Pages
 		{
 			Navigation.PopToRootAsync();
 		}
+
+		private void CreateGroupButton_Clicked(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

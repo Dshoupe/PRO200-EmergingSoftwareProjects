@@ -13,7 +13,12 @@
 	<ContentPage.Content>
         <StackLayout x:Name="GroupsStackLayout">
 			<Label Text="Groups"
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" 
+				   FontSize="50"/>
+			<Button x:Name="CreateGroupButton"
+					Text="Create New Group"
+					BackgroundColor="#D7CABD"
+					Clicked="CreateGroupButton_Clicked"/>
 		</StackLayout>
     </ContentPage.Content>
 </ContentPage>
