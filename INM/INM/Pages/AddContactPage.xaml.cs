@@ -68,15 +68,45 @@ namespace INM.Pages
 
         private void B_Clicked(object sender, EventArgs e)
         {
-            int index = ContactList.Children.IndexOf((Button)sender);
-            this.user.Contacts.Add(Contacts[index - 1]);
-            using (var sq = new Persistence.SQLiteDb())
+            int index = ContactList.Children.IndexOf((Button)sender)-1;
+            if (!user.Contacts.Contains(Contacts[index]))
             {
-                sq.UpdateUser(user);
+                bool addSuccessful = false;
+                this.user.Contacts.Add(Contacts[index]);
+                using (var sq = new Persistence.SQLiteDb())
+                {
+                    if (user.ID < Contacts[index].ID)
+                    {
+                        addSuccessful = sq.CreateContact(user.ID, Contacts[index].ID);
+                        sq.UpdateUser(user);
+                        var records = sq.GetContact(user.ID, Contacts[index].ID);
+                        DisplayAlert("", $"{records.ID} {records.PrimaryUserId} {records.ContactUserId}", "Ok");
+                    }
+                    else
+                    {
+                        addSuccessful = sq.CreateContact(Contacts[index].ID, user.ID);
+                        sq.UpdateUser(user);
+                    }
+                }
+                string retMsg = addSuccessful ? "User Added" : "Something went wrong";
+                DisplayAlert("", retMsg, "Okay");
             }
-            DisplayAlert("", "User Added", "Okay");
+            else
+            {
+                DisplayAlert("","That user is already in your contact's list", "Okay");
+            }
         }
 
+        private void SearchBarEntry_Focused(object sender, FocusEventArgs e)
+        {
+            SearchBarEntry.Text = "";
+        }
+
+        private void SearchBarEntry_Unfocused(object sender, FocusEventArgs e)
+        {
+            SearchBarEntry.Text = "Search for People";
+
+        }
     }
 }
 

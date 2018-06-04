@@ -6,6 +6,8 @@
 		<StackLayout>
 			<Entry x:Name="SearchBarEntry" 
 				   Text="Search for people"
+                   Focused="SearchBarEntry_Focused"
+                   Unfocused="SearchBarEntry_Unfocused"
 				   />
 			<Button x:Name="SearchButton"
 					Text="Search"

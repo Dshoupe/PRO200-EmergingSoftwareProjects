@@ -18,23 +18,35 @@ namespace INM.Pages
 		{
 			InitializeComponent ();
 			this.user = user;
+            DisplayGroups();
 		}
 
 		private void DisplayGroups()
 		{
-			if(user.Groups.Count == 0)
+            using (var sq = new Persistence.SQLiteDb())
+            {
+                user.Groups = sq.GetUserGroups(user.ID);
+            }
+            if (user.Groups.Count == 0)
 			{
 				Label noGroupsLabel = new Label
 				{
 					Text = "You have currently have no groups",
 					FontSize = 10.0
 				};
-				GroupsStackLayout.Children.Add(noGroupsLabel);
+				groupPane.Children.Add(noGroupsLabel);
 			}
 			else
 			{
-				//Get the user's groups 
-			}
+                foreach (Group g in user.Groups)
+                {
+                    Label l = new Label
+                    {
+                        Text = g.GroupName
+                    };
+                    groupPane.Children.Add(l);
+                }
+            }
 		}
 
 		private void HomeToolbarItem_Clicked(object sender, EventArgs e)
@@ -61,5 +73,19 @@ namespace INM.Pages
 		{
 			Navigation.PopToRootAsync();
 		}
-	}
+
+        private void groupButton_Clicked(object sender, EventArgs e)
+        {
+            using (var sq = new Persistence.SQLiteDb())
+            {
+                Group tempGroup = new Group
+                {
+                    GroupName = "Test Group",
+                    LeadUserId = user.ID
+                };
+                sq.CreateGroup(tempGroup);
+                user.Groups = sq.GetUserGroups(user.ID);
+            }
+        }
+    }
 }

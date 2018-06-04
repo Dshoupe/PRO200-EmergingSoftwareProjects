@@ -23,6 +23,11 @@ namespace INM.Pages
 
         private void DisplayContacts()
         {
+            using (var sq = new Persistence.SQLiteDb())
+            {
+                sq.GetContactList(user);
+            }
+
             if (user.Contacts.Count == 0)
             {
                 Label noContactsLabel = new Label

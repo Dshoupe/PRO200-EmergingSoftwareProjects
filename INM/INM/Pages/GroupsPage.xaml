@@ -13,6 +13,8 @@
         <StackLayout x:Name="GroupsStackLayout">
 			<Label Text="Groups"
                 HorizontalOptions="CenterAndExpand" />
-		</StackLayout>
+            <StackLayout x:Name="groupPane"/>
+            <Button Text="Add group" x:Name="groupButton" Clicked="groupButton_Clicked"/>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

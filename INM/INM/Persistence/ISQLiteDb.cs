@@ -18,7 +18,8 @@ namespace INM.Persistence
 		bool UpdateUser(User userToUpdate);
 
 		List<User> GetUsers();
-		List<Group> GetGroups();
+		List<Group> GetUserGroups(int userId);
+        List<AudioRecord> GetUserAudioRecordings(int userId);
 		User GetUserByUsername(string userName);
 		User GetUserByEmail(string email);
 		User GetUserById(int userId);

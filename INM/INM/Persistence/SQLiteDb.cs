@@ -32,7 +32,23 @@ namespace INM.Persistence
             #endregion
         }
 
-
+        public bool GetContactList(User user)
+        {
+            try
+            {
+                var primaryUserList = _DbConnection.Table<UserUser>().Where(x => x.PrimaryUserId == user.ID || x.ContactUserId == user.ID).ToList();
+                foreach (UserUser uu in primaryUserList)
+                {
+                    user.Contacts.Add(uu.PrimaryUserId == user.ID? GetUserById(uu.ContactUserId): GetUserById(uu.PrimaryUserId));
+                }
+                return true;
+            }
+            catch (System.InvalidOperationException ioe)
+            {
+                System.Console.WriteLine(ioe.StackTrace);
+                return false;
+            }
+        }
         public bool CreateGroup(Group newGroup)
         {
             if (!CheckGroupExists(newGroup.GroupName))
@@ -83,7 +99,7 @@ namespace INM.Persistence
                 }
             }
 
-            return true;
+            return false;
         }
 
         public bool CreateUser(User newUser)
@@ -197,9 +213,9 @@ namespace INM.Persistence
         }
 
 
-        public List<Group> GetGroups()
+        public List<Group> GetUserGroups(int userId)
         {
-            return _DbConnection.Table<Group>().Select(u => u).ToList();
+            return _DbConnection.Table<Group>().Where(g => g.LeadUserId == userId).ToList();
         }
 
         public List<User> GetUsers()
@@ -276,5 +292,9 @@ namespace INM.Persistence
             System.GC.SuppressFinalize(this);
         }
 
+        public List<AudioRecord> GetUserAudioRecordings(int userId)
+        {
+            return _DbConnection.Table<AudioRecord>().Where(ar => ar.CreatorId == userId).ToList();
+        }
     }
 }
