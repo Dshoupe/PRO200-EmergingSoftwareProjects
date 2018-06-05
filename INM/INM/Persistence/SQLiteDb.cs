@@ -71,7 +71,7 @@ namespace INM.Persistence
             try
             {
                 _DbConnection.Insert(newAudio, typeof(AudioRecord));
-                return true;
+				return _DbConnection.Table<AudioRecord>().Where(ar => ar.Title == newAudio.Title) == null ? false : true;
             }
             catch (System.InvalidOperationException ioe)
             {
@@ -293,7 +293,10 @@ namespace INM.Persistence
 
         public List<AudioRecord> GetUserAudioRecordings(int userId)
         {
-            return _DbConnection.Table<AudioRecord>().Where(ar => ar.CreatorId == userId).ToList();
+			var table = _DbConnection.Table<AudioRecord>();
+			var results = table.Where(ar => ar.CreatorId == userId);
+			var list = results.ToList();
+			return list;
         }
     }
 }

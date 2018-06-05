@@ -4,22 +4,21 @@
              x:Class="INM.Pages.RecordingsPage"
 			 BackgroundColor="Snow"
 			 Title = "innaMinute">
-				<ContentPage.ToolbarItems>
-								<ToolbarItem x:Name="ContactsToolbarItem" Order="Secondary" Text="Contacts"  Priority="2" Clicked="ContactsToolbarItem_Clicked"/>
-								<ToolbarItem x:Name="HomeToolbarItem" Order="Secondary" Text="Home"  Priority="1" Clicked="HomeToolbarItem_Clicked"/>
-								<ToolbarItem x:Name="GroupsToolbarItem" Order="Secondary" Text="Groups"  Priority="3" Clicked="GroupsToolbarItem_Clicked"/>
-								<ToolbarItem x:Name="ProfileToolbarItem" Order="Secondary" Text="Profile"  Priority="4" Clicked="ProfileToolbarItem_Clicked"/>
-								<ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
-				</ContentPage.ToolbarItems>
-				<ContentPage.Content>
-								<StackLayout>
-												<Label Text="New Name"/>
-												<Entry x:Name="EditEntry"/>
-												<StackLayout x:Name="RecordingsStackLayout">
-																<Label Text="Recordings"
-																FontSize="30"
+	<ContentPage.ToolbarItems>
+		<ToolbarItem x:Name="ContactsToolbarItem" Order="Secondary" Text="Contacts"  Priority="2" Clicked="ContactsToolbarItem_Clicked"/>
+		<ToolbarItem x:Name="HomeToolbarItem" Order="Secondary" Text="Home"  Priority="1" Clicked="HomeToolbarItem_Clicked"/>
+		<ToolbarItem x:Name="GroupsToolbarItem" Order="Secondary" Text="Groups"  Priority="3" Clicked="GroupsToolbarItem_Clicked"/>
+		<ToolbarItem x:Name="ProfileToolbarItem" Order="Secondary" Text="Profile"  Priority="4" Clicked="ProfileToolbarItem_Clicked"/>
+		<ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
+	</ContentPage.ToolbarItems>
+	<ContentPage.Content>
+		<StackLayout>
+			<Label Text="New Name"/>
+			<Entry x:Name="EditEntry"/>
+			<StackLayout x:Name="RecordingsStackLayout">
+				<Label Text="Recordings" FontSize="30"
                 HorizontalOptions="CenterAndExpand" />
-												</StackLayout>
-								</StackLayout>
-				</ContentPage.Content>
+			</StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
 </ContentPage>

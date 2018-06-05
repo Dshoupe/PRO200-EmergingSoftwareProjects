@@ -23,6 +23,6 @@ namespace INM.Persistence
 		User GetUserByUsername(string userName);
 		User GetUserByEmail(string email);
 		User GetUserById(int userId);
-		UserUser GetContact(int lowerUserId, int upperUserId);
+		UserUser GetContact(int lowerUserId, int upperUserId);		
     }
 }
