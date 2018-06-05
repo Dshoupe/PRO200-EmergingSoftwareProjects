@@ -12,19 +12,21 @@
 		<ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
-								<Frame BorderColor="Black"
+		<Frame BorderColor="Black"
 			   Padding="4"
 			   Margin="15">
-												<StackLayout x:Name="GroupsStackLayout"
+			<ScrollView>
+				<StackLayout x:Name="GroupsStackLayout"
 					 BackgroundColor="Snow">
-																<Label Text="Groups"
+					<Label Text="Groups"
                 HorizontalOptions="CenterAndExpand" 
 				   FontSize="50"/>
-																<Button x:Name="CreateGroupButton"
+					<Button x:Name="CreateGroupButton"
 					Text="Create New Group"
 					BackgroundColor="#D7CABD"
 					Clicked="CreateGroupButton_Clicked"/>
-												</StackLayout>
-								</Frame>
-				</ContentPage.Content>
+				</StackLayout>
+			</ScrollView>
+		</Frame>
+	</ContentPage.Content>
 </ContentPage>
