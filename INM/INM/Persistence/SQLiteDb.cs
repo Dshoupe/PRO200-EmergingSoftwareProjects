@@ -20,13 +20,11 @@ namespace INM.Persistence
             _DbConnection = new SQLite.SQLiteConnection(databaseFilePath);
 
             #region CreateDbTables
-
             _DbConnection.CreateTable<User>(); // users
             _DbConnection.CreateTable<UserUser>(); // contacts
             _DbConnection.CreateTable<Group>(); // groups
             _DbConnection.CreateTable<GroupUser>(); // groups with users
             _DbConnection.CreateTable<GroupAudioRecord>(); // groups with audio records
-            _DbConnection.CreateTable<Transcript>(); // audio text
             _DbConnection.CreateTable<AudioRecord>(); // audio data
             #endregion
         }
@@ -298,5 +296,64 @@ namespace INM.Persistence
 			var list = results.ToList();
 			return list;
         }
-    }
+
+		public void Nuke()
+		{
+			var db = new SQLiteDb();
+
+			_DbConnection.DropTable<User>();
+			_DbConnection.DropTable<UserUser>();
+			_DbConnection.DropTable<Group>();
+			_DbConnection.DropTable<GroupUser>();
+			_DbConnection.DropTable<AudioRecord>();
+			_DbConnection.DropTable<GroupAudioRecord>();
+
+			db = new SQLiteDb();
+
+			db.CreateUser(new User()
+			{
+				ID = _DbConnection.Table<User>().Count() + 1,
+				Username = "cmoore",
+				Email = "cmoore@test.com",
+				FirstName = "Christian",
+				LastName = "Moore",
+				PhoneNumber = "12345678910",
+				Password = "cmoore",
+			});
+
+			db.CreateUser(new User()
+			{
+				ID = _DbConnection.Table<User>().Count() + 1,
+				Username = "kstringer",
+				Email = "kstringer@test.com",
+				FirstName = "Kent",
+				LastName = "Stringer",
+				PhoneNumber = "12345678910",
+				Password = "kstringer",
+			});
+
+			db.CreateUser(new User()
+			{
+				ID = _DbConnection.Table<User>().Count() + 1,
+				Username = "dshoupe",
+				Email = "dshoupe@test.com",
+				FirstName = "Dylan",
+				LastName = "Shoupe",
+				PhoneNumber = "12345678910",
+				Password = "dshoupe",
+			});
+
+			db.CreateUser(new User()
+			{
+				ID = _DbConnection.Table<User>().Count() + 1,
+				Username = "kmurphy",
+				Email = "kmurphy@test.com",
+				FirstName = "Kyle",
+				LastName = "Murphy",
+				PhoneNumber = "12345678910",
+				Password = "kmurphy",
+			});
+
+		}
+	}
 }
