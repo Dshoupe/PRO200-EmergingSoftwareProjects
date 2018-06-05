@@ -11,6 +11,7 @@ namespace INM.Persistence
 
         public SQLiteDb()
         {
+           
             string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "persistence");
             if (!System.IO.Directory.Exists(applicationFolderPath))
             {
@@ -80,11 +81,13 @@ namespace INM.Persistence
             }
         }
 
-        public bool CreateContact(int lowerUserId, int upperUserId)
+        public bool CreateContact(int user1Id, int user2Id)
         {
-            if (GetContact(lowerUserId, upperUserId) == null)
+            
+            if (GetContact(user1Id, user2Id) == null)
             {
-                UserUser newCont = new UserUser(lowerUserId, upperUserId);
+                int size = _DbConnection.Table<UserUser>().Count() + 1;
+                UserUser newCont = new UserUser(user1Id, user2Id, size);
 
                 try
                 {
@@ -143,7 +146,7 @@ namespace INM.Persistence
         {
             try
             {
-                var delCont = GetContact(lowerUserId, upperUserId);
+                UserUser delCont = GetContact(lowerUserId, upperUserId);
                 _DbConnection.Delete<UserUser>(delCont.ID);
                 return true;
             }
@@ -263,8 +266,13 @@ namespace INM.Persistence
 
         public UserUser GetContact(int lowerUserId, int upperUserId)
         {
-            int lowerId = lowerUserId < upperUserId ? lowerUserId : upperUserId;
-            int upperId = upperUserId > lowerUserId ? upperUserId : lowerUserId;
+            int lowerId = lowerUserId;
+            int upperId = upperUserId;
+            if (lowerUserId > upperUserId)
+            {
+                lowerId = upperUserId;
+                upperId = lowerUserId;
+            }
 
             try
             {
@@ -294,6 +302,25 @@ namespace INM.Persistence
         public List<AudioRecord> GetUserAudioRecordings(int userId)
         {
             return _DbConnection.Table<AudioRecord>().Where(ar => ar.CreatorId == userId).ToList();
+        }
+
+        public Group GetGroupByName(string name)
+        {
+            return _DbConnection.Table<Group>().Where(x => x.GroupName == name).First();
+        }
+
+        public bool CreateGroupUser(GroupUser gu)
+        {
+            try
+            {
+                _DbConnection.Insert(gu);
+                return true;
+            }
+            catch (System.InvalidOperationException ioe)
+            {
+                System.Console.WriteLine(ioe.StackTrace);
+                return false;
+            }
         }
     }
 }

@@ -16,13 +16,16 @@
 			<Entry x:Name="SearchBarEntry" 
 				   Text="Search for people"
                    Focused="SearchBarEntry_Focused"
-                   Unfocused="SearchBarEntry_Unfocused"
 				   />
 			<Button x:Name="SearchButton"
 					Text="Search"
 					Clicked="SearchButton_Clicked"
 					BackgroundColor="#D7CABD"/>
             <StackLayout x:Name="ContactList"/>
+            <Button x:Name="DoneButton"
+					Text="Done"
+					Clicked="DoneButton_Clicked"
+					BackgroundColor="#D7CABD"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

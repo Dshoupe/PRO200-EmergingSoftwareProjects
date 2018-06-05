@@ -15,7 +15,8 @@
 			<Label Text="Contacts" 
 				   HorizontalTextAlignment="Center"
 				   FontSize="30"/>
-			<Button x:Name="AddNewContactButton"
+            <StackLayout x:Name="ContactsPane"/>
+            <Button x:Name="AddNewContactButton"
 					Text="Add New Contact"
 					Clicked="AddNewContactButton_Clicked"
 					BackgroundColor="#D7CABD"

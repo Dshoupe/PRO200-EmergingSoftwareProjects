@@ -13,5 +13,13 @@ namespace INM.Models
 		public int LeadUserId { get; set; }
 
 		public string GroupName { get; set; }
+
+        public Group() { }
+
+        public Group(int leadUserId, string groupName)
+		{
+			LeadUserId = leadUserId;
+			GroupName = groupName;
+		}
 	}
 }
