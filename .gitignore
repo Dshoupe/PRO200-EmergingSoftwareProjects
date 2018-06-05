@@ -60,3 +60,4 @@ AndroidNative/gradlew
 AndroidNative/gradlew.bat
 !EmbeddingTestBeds/Embedding.iOS/*.designer.cs
 *.csproj
+INM/INM.Android/INM.Android.csproj
