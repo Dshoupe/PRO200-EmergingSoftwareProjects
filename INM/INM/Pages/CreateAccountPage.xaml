@@ -2,49 +2,54 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="INM.Pages.CreateAccountPage"
-			 BackgroundColor="Snow">
+			 BackgroundColor="#CFCDD7"
+													Title="innaMinute">
 				<ContentPage.Content>
-								<StackLayout>
-												<Label Text="innaMinute" 
+								<Frame BorderColor="Black"
+			   Padding="4"
+			   Margin="15">
+												<StackLayout BackgroundColor="Snow">
+																<Label Text="innaMinute" 
 																HorizontalOptions="Center"
 															 FontFamily="cursive"
 															 FontSize="40"/>
 
-												<ScrollView>
-																<StackLayout>
-																				<Label Text="First Name"
+																<ScrollView>
+																				<StackLayout>
+																								<Label Text="First Name"
 																											HorizontalOptions="Start"/>
-																				<Entry x:Name="FNameEntry"/>
+																								<Entry x:Name="FNameEntry"/>
 
-																				<Label Text="Last Name"
+																								<Label Text="Last Name"
 																											HorizontalOptions="Start"/>
-																				<Entry x:Name="LNameEntry"/>
+																								<Entry x:Name="LNameEntry"/>
 
-																				<Label Text="Email"
+																								<Label Text="Email"
 																											HorizontalOptions="Start"/>
-																				<Entry x:Name="EmailEntry"/>
+																								<Entry x:Name="EmailEntry"/>
 
-																				<Label Text="Phone"
+																								<Label Text="Phone"
 																											HorizontalOptions="Start"/>
-																				<Entry x:Name="PhoneEntry"/>
+																								<Entry x:Name="PhoneEntry"/>
 
-																				<Label Text="Username"
+																								<Label Text="Username"
 																											HorizontalOptions="Start"/>
-																				<Entry x:Name="UsernameEntry"/>
+																								<Entry x:Name="UsernameEntry"/>
 
-																				<Label Text="Password"
+																								<Label Text="Password"
 																												HorizontalOptions="Start"/>
-																				<Entry x:Name="PasswordEntry"
+																								<Entry x:Name="PasswordEntry"
 																											TextChanged="PasswordEntry_TextChanged"/>
 
-																				<Label Text="Confirm Password"
+																								<Label Text="Confirm Password"
 																											HorizontalOptions="Start"/>
-																				<Entry x:Name="CPasswordEntry"/>
-																</StackLayout>
-												</ScrollView>
+																								<Entry x:Name="CPasswordEntry"/>
+																				</StackLayout>
+																</ScrollView>
 
-												<Button x:Name="CreateAccountBtn" Text="Create Account" Clicked="CreateAccountBtn_Clicked"
+																<Button x:Name="CreateAccountBtn" Text="Create Account" Clicked="CreateAccountBtn_Clicked"
 														BackgroundColor="#D7CABD"/>
-								</StackLayout>
+												</StackLayout>
+								</Frame>
 				</ContentPage.Content>
 </ContentPage>

@@ -2,22 +2,27 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="INM.Pages.AddToGroupPage"
-			 BackgroundColor="Snow">
-    <ContentPage.Content>
-        <StackLayout >
-            <Label Text="Add To Group"
+			 BackgroundColor="#CFCDD7"
+													Title="innaMinute">
+				<ContentPage.Content>
+								<Frame BorderColor="Black"
+			   Padding="4"
+			   Margin="15">
+												<StackLayout BackgroundColor="Snow">
+																<Label Text="Add To Group"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-			<StackLayout Orientation="Horizontal">
-				<Label x:Name="NameGroupLabel"
+																<StackLayout Orientation="Horizontal">
+																				<Label x:Name="NameGroupLabel"
 					   Text="Name Group"/>
-				<Entry x:Name="GroupNameEntry"
+																				<Entry x:Name="GroupNameEntry"
 				   VerticalOptions="CenterAndExpand" 
 				   HorizontalOptions="CenterAndExpand"/>
-			</StackLayout>
-			<StackLayout x:Name="DisplayContactsStackLayout">
-				
-			</StackLayout>
-		</StackLayout>
-    </ContentPage.Content>
+																</StackLayout>
+																<StackLayout x:Name="DisplayContactsStackLayout">
+
+																</StackLayout>
+												</StackLayout>
+								</Frame>
+				</ContentPage.Content>
 </ContentPage>

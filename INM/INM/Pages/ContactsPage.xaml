@@ -2,33 +2,34 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="INM.Pages.ContactsPage"
-			 BackgroundColor="#CFCDD7">
-	<ContentPage.ToolbarItems>
-		<ToolbarItem x:Name="HomeToolbarItem" Order="Secondary" Text="Home"  Priority="1" Clicked="HomeToolbarItem_Clicked"/>
-		<ToolbarItem x:Name="RecordingsToolbarItem" Order="Secondary" Text="Recordings"  Priority="2" Clicked="RecordingsToolbarItem_Clicked"/>
-		<ToolbarItem x:Name="GroupsToolbarItem" Order="Secondary" Text="Groups"  Priority="3" Clicked="GroupsToolbarItem_Clicked"/>
-		<ToolbarItem x:Name="ProfileToolbarItem" Order="Secondary" Text="Profile"  Priority="4" Clicked="ProfileToolbarItem_Clicked"/>
-		<ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
-	</ContentPage.ToolbarItems>
-	<ContentPage.Content>
-		<Frame  Margin="30"
+			 BackgroundColor="#CFCDD7"
+													Title="innaMinute">
+				<ContentPage.ToolbarItems>
+								<ToolbarItem x:Name="HomeToolbarItem" Order="Secondary" Text="Home"  Priority="1" Clicked="HomeToolbarItem_Clicked"/>
+								<ToolbarItem x:Name="RecordingsToolbarItem" Order="Secondary" Text="Recordings"  Priority="2" Clicked="RecordingsToolbarItem_Clicked"/>
+								<ToolbarItem x:Name="GroupsToolbarItem" Order="Secondary" Text="Groups"  Priority="3" Clicked="GroupsToolbarItem_Clicked"/>
+								<ToolbarItem x:Name="ProfileToolbarItem" Order="Secondary" Text="Profile"  Priority="4" Clicked="ProfileToolbarItem_Clicked"/>
+								<ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
+				</ContentPage.ToolbarItems>
+				<ContentPage.Content>
+								<Frame  Margin="15"
 				BorderColor="Black"
 				Padding="10">
-			<StackLayout x:Name="ContactpageStackLayout"
+												<StackLayout x:Name="ContactpageStackLayout"
 					 BackgroundColor="Snow"
 					>
-				<Label Text="Contacts" 
+																<Label Text="Contacts" 
 				   HorizontalTextAlignment="Center"
 					   TextColor="Black"
 				   FontSize="30"/>
-				<Button x:Name="AddNewContactButton"
+																<Button x:Name="AddNewContactButton"
 					Text="Add New Contact"
 					Clicked="AddNewContactButton_Clicked"
 					BackgroundColor="#D7CABD"
 					/>
-			</StackLayout>
-		</Frame>
-		
-        
-    </ContentPage.Content>
+												</StackLayout>
+								</Frame>
+
+
+				</ContentPage.Content>
 </ContentPage>
