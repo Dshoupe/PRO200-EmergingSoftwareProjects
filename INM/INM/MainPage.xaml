@@ -3,30 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:INM"
              x:Class="INM.MainPage"
-			 BackgroundColor="Snow">
-
-	<StackLayout>
-		<Label Text="innaMinute"
+			 BackgroundColor="#CFCDD7">
+	<Frame Margin="30"
+		   BorderColor="Black"
+		   Padding="10">
+		<StackLayout
+		BackgroundColor="Snow">
+			<Label Text="innaMinute"
 			   HorizontalOptions="Center"
 			   FontFamily="cursive"
 			   FontSize="50"
 			   TextColor="#000"/>
-		<Label Text="Email"
+			<Label Text="Email"
 			   HorizontalOptions="Start"
 			   Margin="10, 0, -10, 0"
 			   TextColor="Black"/>
-		<Entry x:Name="EmailEntry"/>
-		<Label Text="Password"
+			<Entry x:Name="EmailEntry"/>
+			<Label Text="Password"
 			   HorizontalOptions="Start"
 			   Margin="10, 40, -10, 0"
 			   TextColor="Black"/>
-		<Entry IsPassword="True" x:Name="PasswordEntry"/>
-		<Button x:Name="LoginBtn" 
+			<Entry IsPassword="True" x:Name="PasswordEntry"/>
+			<Button x:Name="LoginBtn" 
 				Text="Login" 
 				Clicked="LoginBtn_Clicked" 
 				Margin="0, 10, 0, 0 " 
 				BackgroundColor="#D7CABD"/>
 
-		<Button x:Name="CreateAccountBtn" Text="Create Account" Clicked="CreateAccountBtn_Clicked" BackgroundColor="#D7CABD"/>
-	</StackLayout>
+			<Button x:Name="CreateAccountBtn" Text="Create Account" Clicked="CreateAccountBtn_Clicked" BackgroundColor="#D7CABD"/>
+		</StackLayout>
+	</Frame>
+
 </ContentPage> 

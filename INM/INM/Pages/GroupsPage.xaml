@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="INM.Pages.GroupsPage"
-			 BackgroundColor="Snow">
+			 BackgroundColor="#CFCDD7">
 	<ContentPage.ToolbarItems>
 		<ToolbarItem x:Name="ContactsToolbarItem" Order="Secondary" Text="Contacts"  Priority="3" Clicked="ContactsToolbarItem_Clicked"/>
 		<ToolbarItem x:Name="RecordingsToolbarItem" Order="Secondary" Text="Recordings"  Priority="2" Clicked="RecordingsToolbarItem_Clicked"/>
@@ -11,7 +11,8 @@
 		<ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
-        <StackLayout x:Name="GroupsStackLayout">
+        <StackLayout x:Name="GroupsStackLayout"
+					 BackgroundColor="Snow">
 			<Label Text="Groups"
                 HorizontalOptions="CenterAndExpand" 
 				   FontSize="50"/>

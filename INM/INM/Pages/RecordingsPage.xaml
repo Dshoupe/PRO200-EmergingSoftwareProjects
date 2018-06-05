@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="INM.Pages.RecordingsPage"
-			 BackgroundColor="Snow">
+			 BackgroundColor="Snow"
+			 Title = "innaMinute">
 				<ContentPage.ToolbarItems>
 								<ToolbarItem x:Name="ContactsToolbarItem" Order="Secondary" Text="Contacts"  Priority="2" Clicked="ContactsToolbarItem_Clicked"/>
 								<ToolbarItem x:Name="HomeToolbarItem" Order="Secondary" Text="Home"  Priority="1" Clicked="HomeToolbarItem_Clicked"/>

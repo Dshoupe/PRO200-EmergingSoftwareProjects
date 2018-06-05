@@ -14,7 +14,9 @@ namespace INM
 			MainPage = new NavigationPage(new MainPage())
 			{
 				BarBackgroundColor = Color.FromHex("#D7CABD"),
-				BarTextColor = Color.Black
+				BarTextColor = Color.Black,
+				
+				
 			};
 		}
 
