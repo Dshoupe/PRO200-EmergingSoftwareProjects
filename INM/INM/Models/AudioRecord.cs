@@ -11,9 +11,6 @@ namespace INM.Models
 		[ForeignKey(typeof(User))]
 		public int CreatorId { get; }
 
-		[ForeignKey(typeof(Transcript))]
-		public int Transcript { get; set; }
-
 		public string Title { get; set; }
 
 		public byte[] AudioClip { get; set; }

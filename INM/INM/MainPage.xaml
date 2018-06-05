@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:INM"
              x:Class="INM.MainPage"
 			 BackgroundColor="#CFCDD7">
-	<Frame Margin="30"
+	<Frame Margin="15"
 		   BorderColor="Black"
 		   Padding="10">
 		<StackLayout

@@ -6,8 +6,6 @@ namespace INM.Models
 	[Table("UserUser")]
 	public class UserUser
 	{
-
-        [PrimaryKey]
         public int ID { get; set; }
 
 		[ForeignKey(typeof(User))]
