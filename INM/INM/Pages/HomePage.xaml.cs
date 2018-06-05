@@ -7,7 +7,6 @@ using System.Timers;
 using System.Speech.Recognition;
 using System.Text;
 using System.Diagnostics;
-using Plugin.SpeechRecognition;
 
 namespace INM.Pages
 {
