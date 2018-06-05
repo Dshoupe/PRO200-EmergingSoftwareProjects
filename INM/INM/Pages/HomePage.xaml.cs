@@ -1,12 +1,9 @@
+
 using Android.Media;
 using System;
 using INM.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Timers;
-using System.Speech.Recognition;
-using System.Text;
-using System.Diagnostics;
 
 namespace INM.Pages
 {
@@ -17,6 +14,7 @@ namespace INM.Pages
 		bool recordClicked = false;
 		Time time = new Time();
 		MediaRecorder recorder = new MediaRecorder();
+		private string audioFilePath;
 
 		public HomePage(User user)
 		{
@@ -39,7 +37,8 @@ namespace INM.Pages
 				recorder.SetAudioSource(AudioSource.Mic);
 				recorder.SetOutputFormat(OutputFormat.Mpeg4);
 				recorder.SetAudioEncoder(AudioEncoder.AmrNb);
-				recorder.SetOutputFile(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath + $"/{DateTime.Now.ToString("MM-dd-yyyy-HH;mm;ss")}.mp3");
+				audioFilePath = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath + $"/{DateTime.Now.ToString("MM-dd-yyyy-HH;mm;ss")}.mp3";
+				recorder.SetOutputFile(audioFilePath);
 				recorder.Prepare();
 				recorder.Start();
 				RecordButton.Source = "stopbuttonimage.png";
@@ -63,34 +62,26 @@ namespace INM.Pages
 				recorder = null;
 				recordClicked = false;
 				time.Reset();
+
+				byte[] audioBytes = System.IO.File.ReadAllBytes(audioFilePath);
+				Models.AudioRecord ar = new Models.AudioRecord(user.ID)
+				{
+					AudioClip = audioBytes,
+				};
+
+				using (var db = new Persistence.SQLiteDb())
+				{
+					if (db.CreateRecording(ar))
+					{
+						Android.Util.Log.WriteLine(Android.Util.LogPriority.Info, "Audio Save", $"Audio saved for user {user.ID}");
+					}
+					else
+					{
+						DisplayAlert("", "Did not save audio", "OK");
+					}
+				}
 			}
 		}
-
-		//private void PlayTestBtn_Clicked(object sender, EventArgs e)
-		//{
-		//				if (!recordClicked)
-		//				{
-		//								MediaPlayer mp = new MediaPlayer();
-		//								if (!playClicked)
-		//								{
-		//												mp.Reset();
-		//												mp.SetDataSource(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath + "/test.mp3");
-		//												mp.Prepare();
-		//												mp.Start();
-		//												playClicked = true;
-		//								}
-		//								else
-		//								{
-		//												mp.Stop();
-		//												mp.Release();
-		//												playClicked = false;
-		//								}
-		//				}
-		//				else
-		//				{
-		//								DisplayAlert("Error", "Cannot play while recording", "Ok");
-		//				}
-		//}
 
 		private void ContactsToolbarItem_Clicked(object sender, EventArgs e)
 		{

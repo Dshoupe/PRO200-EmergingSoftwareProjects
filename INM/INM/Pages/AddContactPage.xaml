@@ -2,30 +2,34 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="INM.Pages.AddContactPage"
-			 BackgroundColor="Snow">
-	<ContentPage.ToolbarItems>
-		<ToolbarItem x:Name="HomeToolbarItem" Order="Secondary" Text="Home"  Priority="1" Clicked="HomeToolbarItem_Clicked"/>
-		<ToolbarItem x:Name="RecordingsToolbarItem" Order="Secondary" Text="Recordings"  Priority="2" Clicked="RecordingsToolbarItem_Clicked"/>
-		<ToolbarItem x:Name="GroupsToolbarItem" Order="Secondary" Text="Groups"  Priority="3" Clicked="GroupsToolbarItem_Clicked"/>
-		<ToolbarItem x:Name="ProfileToolbarItem" Order="Secondary" Text="Profile"  Priority="4" Clicked="ProfileToolbarItem_Clicked"/>
-		<ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
-	</ContentPage.ToolbarItems>
+			 BackgroundColor="#CFCDD7"
+													Title="innaMinute">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="HomeToolbarItem" Order="Secondary" Text="Home"  Priority="1" Clicked="HomeToolbarItem_Clicked"/>
+        <ToolbarItem x:Name="RecordingsToolbarItem" Order="Secondary" Text="Recordings"  Priority="2" Clicked="RecordingsToolbarItem_Clicked"/>
+        <ToolbarItem x:Name="GroupsToolbarItem" Order="Secondary" Text="Groups"  Priority="3" Clicked="GroupsToolbarItem_Clicked"/>
+        <ToolbarItem x:Name="ProfileToolbarItem" Order="Secondary" Text="Profile"  Priority="4" Clicked="ProfileToolbarItem_Clicked"/>
+        <ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-		
-		<StackLayout>
-			<Entry x:Name="SearchBarEntry" 
+        <Frame BorderColor="Black"
+			   Padding="4"
+			   Margin="15">
+            <StackLayout BackgroundColor="Snow">
+                <Entry x:Name="SearchBarEntry" 
 				   Text="Search for people"
                    Focused="SearchBarEntry_Focused"
 				   />
-			<Button x:Name="SearchButton"
+                <Button x:Name="SearchButton"
 					Text="Search"
 					Clicked="SearchButton_Clicked"
 					BackgroundColor="#D7CABD"/>
-            <StackLayout x:Name="ContactList"/>
-            <Button x:Name="DoneButton"
+                <StackLayout x:Name="ContactList"/>
+                <Button x:Name="DoneButton"
 					Text="Done"
 					Clicked="DoneButton_Clicked"
 					BackgroundColor="#D7CABD"/>
-        </StackLayout>
+            </StackLayout>
+        </Frame>
     </ContentPage.Content>
 </ContentPage>

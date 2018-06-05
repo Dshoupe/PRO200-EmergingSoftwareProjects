@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="INM.Pages.GroupsPage"
-			 BackgroundColor="Snow">
+			 BackgroundColor="#CFCDD7"
+													Title="innaMinute">
 	<ContentPage.ToolbarItems>
 		<ToolbarItem x:Name="ContactsToolbarItem" Order="Secondary" Text="Contacts"  Priority="3" Clicked="ContactsToolbarItem_Clicked"/>
 		<ToolbarItem x:Name="RecordingsToolbarItem" Order="Secondary" Text="Recordings"  Priority="2" Clicked="RecordingsToolbarItem_Clicked"/>
@@ -11,14 +12,21 @@
 		<ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
-        <StackLayout x:Name="GroupsStackLayout">
-			<Label Text="Groups"
+		<Frame BorderColor="Black"
+			   Padding="4"
+			   Margin="15">
+			<ScrollView>
+				<StackLayout x:Name="GroupsStackLayout"
+					 BackgroundColor="Snow">
+					<Label Text="Groups"
                 HorizontalOptions="CenterAndExpand" 
 				   FontSize="50"/>
-			<Button x:Name="CreateGroupButton"
+					<Button x:Name="CreateGroupButton"
 					Text="Create New Group"
 					BackgroundColor="#D7CABD"
 					Clicked="CreateGroupButton_Clicked"/>
-		</StackLayout>
-    </ContentPage.Content>
+				</StackLayout>
+			</ScrollView>
+		</Frame>
+	</ContentPage.Content>
 </ContentPage>

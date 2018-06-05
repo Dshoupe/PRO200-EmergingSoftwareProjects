@@ -10,21 +10,27 @@
         <ToolbarItem x:Name="ProfileToolbarItem" Order="Secondary" Text="Profile"  Priority="4" Clicked="ProfileToolbarItem_Clicked"/>
         <ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
-    <ContentPage.Content>
-        <StackLayout >
-            <Label Text="Add To Group"
+	<ContentPage.Content>
+		<Frame BorderColor="Black"
+			   Padding="4"
+			   Margin="15">
+			<ScrollView>
+				<StackLayout BackgroundColor="Snow">
+					<Label Text="Add To Group"
+                VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-			<StackLayout Orientation="Vertical">
-				<Label x:Name="NameGroupLabel"
+					<StackLayout Orientation="Horizontal">
+						<Label x:Name="NameGroupLabel"
 					   Text="Name Group"/>
-				<Entry x:Name="GroupNameEntry"/>
-			</StackLayout>
-			<StackLayout x:Name="DisplayContactsStackLayout">
-				
-			</StackLayout>
-			<Button x:Name="CreateGroupButton"
-					Text="Create Group"
-					Clicked="CreateGroupButton_Clicked"/>
-		</StackLayout>
-    </ContentPage.Content>
+						<Entry x:Name="GroupNameEntry"
+				   VerticalOptions="CenterAndExpand" 
+				   HorizontalOptions="CenterAndExpand"/>
+					</StackLayout>
+					<StackLayout x:Name="DisplayContactsStackLayout">
+
+					</StackLayout>
+				</StackLayout>
+			</ScrollView>
+		</Frame>
+	</ContentPage.Content>
 </ContentPage>

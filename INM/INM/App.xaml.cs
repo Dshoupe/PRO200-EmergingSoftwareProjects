@@ -1,3 +1,4 @@
+using INM.Models;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,11 +11,13 @@ namespace INM
 		public App()
 		{
 			InitializeComponent();
-
+			
 			MainPage = new NavigationPage(new MainPage())
 			{
 				BarBackgroundColor = Color.FromHex("#D7CABD"),
-				BarTextColor = Color.Black
+				BarTextColor = Color.Black,
+				
+				
 			};
 		}
 
@@ -28,9 +31,30 @@ namespace INM
 			// Handle when your app sleeps
 		}
 
+
 		protected override void OnResume()
 		{
 			// Handle when your app resumes
 		}
+
+		//private void Create10RandomUsers()
+		//{
+		//	for(int i =0; i < 10; i++)
+		//	{
+		//		User user = new User()
+		//		{
+		//			FirstName = $"Tester{i + 1}",
+		//			LastName = $"Last{i + 1}",
+		//			Email = $"testEmail{i}@test.com",
+		//			Password = $"test1234{i}",
+		//			PhoneNumber = $"{i}233232345",
+		//			Username = $"Tester{i}"
+		//		};
+		//		using (var db = new Persistence.SQLiteDb())
+		//		{
+		//			db.CreateUser(user)
+		//		}
+		//	}
+		//}
 	}
 }
