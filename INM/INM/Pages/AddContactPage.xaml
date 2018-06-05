@@ -5,6 +5,7 @@
 			 BackgroundColor="#CFCDD7"
 													Title="innaMinute">
     <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ContactsToolbarItem" Order="Secondary" Text="Contacts"  Priority="4" Clicked="ContactsToolbarItem_Clicked"/>
         <ToolbarItem x:Name="HomeToolbarItem" Order="Secondary" Text="Home"  Priority="1" Clicked="HomeToolbarItem_Clicked"/>
         <ToolbarItem x:Name="RecordingsToolbarItem" Order="Secondary" Text="Recordings"  Priority="2" Clicked="RecordingsToolbarItem_Clicked"/>
         <ToolbarItem x:Name="GroupsToolbarItem" Order="Secondary" Text="Groups"  Priority="3" Clicked="GroupsToolbarItem_Clicked"/>

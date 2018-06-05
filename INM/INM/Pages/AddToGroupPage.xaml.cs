@@ -103,9 +103,14 @@ namespace INM.Pages
             
         }
 
-        private void HomeToolbarItem_Clicked(object sender, EventArgs e)
+        private void GroupNameEntry_Focused(object sender, FocusEventArgs e)
         {
-            Navigation.PushAsync(new HomePage(user));
+            GroupNameEntry.Text = "";
+        }
+
+        private void ContactsToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ContactsPage(user));
         }
 
         private void RecordingsToolbarItem_Clicked(object sender, EventArgs e)
@@ -117,10 +122,14 @@ namespace INM.Pages
         {
             Navigation.PushAsync(new GroupsPage(user));
         }
-
         private void ProfileToolbarItem_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new ProfilePage(user));
+        }
+
+        private void HomeToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new HomePage(user));
         }
 
         private void SignOutToolbarItem_Clicked(object sender, EventArgs e)

@@ -173,7 +173,12 @@ namespace INM.Pages
 
 		}
 
-		private void ContactsToolbarItem_Clicked(object sender, EventArgs e)
+        private void EditEntry_Focused(object sender, FocusEventArgs e)
+        {
+            EditEntry.Text = "";
+        }
+
+        private void ContactsToolbarItem_Clicked(object sender, EventArgs e)
 		{
 			Navigation.PushAsync(new ContactsPage(user));
 		}

@@ -2,8 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="INM.Pages.AddToGroupPage"
-			 BackgroundColor="Snow">
+			 BackgroundColor="#CFCDD7"
+             Title="innaMinute">
     <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ContactsToolbarItem" Order="Secondary" Text="Contacts"  Priority="4" Clicked="ContactsToolbarItem_Clicked"/>
         <ToolbarItem x:Name="HomeToolbarItem" Order="Secondary" Text="Home"  Priority="1" Clicked="HomeToolbarItem_Clicked"/>
         <ToolbarItem x:Name="RecordingsToolbarItem" Order="Secondary" Text="Recordings"  Priority="2" Clicked="RecordingsToolbarItem_Clicked"/>
         <ToolbarItem x:Name="GroupsToolbarItem" Order="Secondary" Text="Groups"  Priority="3" Clicked="GroupsToolbarItem_Clicked"/>
@@ -15,22 +17,19 @@
 			   Padding="4"
 			   Margin="15">
 			<ScrollView>
-				<StackLayout BackgroundColor="Snow">
-					<Label Text="Add To Group"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-					<StackLayout Orientation="Horizontal">
-						<Label x:Name="NameGroupLabel"
-					   Text="Name Group"/>
-						<Entry x:Name="GroupNameEntry"
-				   VerticalOptions="CenterAndExpand" 
-				   HorizontalOptions="CenterAndExpand"/>
-					</StackLayout>
-					<StackLayout x:Name="DisplayContactsStackLayout">
-
-					</StackLayout>
-				</StackLayout>
-			</ScrollView>
+                <StackLayout BackgroundColor="Snow">
+                    <Label Text="Add To Group"
+                            HorizontalTextAlignment="Center"
+                            TextColor="Black"
+				            FontSize="30"/>
+                    <StackLayout>
+                        <Entry x:Name="GroupNameEntry" Text="Group Name" Focused="GroupNameEntry_Focused"/>
+                        <StackLayout x:Name="DisplayContactsStackLayout"/>
+                        <Button x:Name="CreateGroupButton" Text="Create Group"
+                                Clicked="CreateGroupButton_Clicked" BackgroundColor="#D7CABD"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
 		</Frame>
 	</ContentPage.Content>
 </ContentPage>
