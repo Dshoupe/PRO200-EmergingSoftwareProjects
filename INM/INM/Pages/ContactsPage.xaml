@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="INM.Pages.ContactsPage"
-			 BackgroundColor="#CFCDD7">
+			 BackgroundColor="#CFCDD7"
+													Title="innaMinute">
 	<ContentPage.ToolbarItems>
 		<ToolbarItem x:Name="HomeToolbarItem" Order="Secondary" Text="Home"  Priority="1" Clicked="HomeToolbarItem_Clicked"/>
 		<ToolbarItem x:Name="RecordingsToolbarItem" Order="Secondary" Text="Recordings"  Priority="2" Clicked="RecordingsToolbarItem_Clicked"/>
@@ -11,24 +12,27 @@
 		<ToolbarItem x:Name="SignOutToolbarItem" Order="Secondary" Text="Sign Out"  Priority="5" Clicked="SignOutToolbarItem_Clicked"/>
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
-		<Frame  Margin="30"
+		<Frame  Margin="15"
 				BorderColor="Black"
 				Padding="10">
-			<StackLayout x:Name="ContactpageStackLayout"
+			<ScrollView>
+				<StackLayout x:Name="ContactpageStackLayout"
 					 BackgroundColor="Snow"
 					>
-				<Label Text="Contacts" 
+					<Label Text="Contacts" 
 				   HorizontalTextAlignment="Center"
 					   TextColor="Black"
 				   FontSize="30"/>
-				<Button x:Name="AddNewContactButton"
+					<Button x:Name="AddNewContactButton"
 					Text="Add New Contact"
 					Clicked="AddNewContactButton_Clicked"
 					BackgroundColor="#D7CABD"
 					/>
-			</StackLayout>
+				</StackLayout>
+			</ScrollView>
+			
 		</Frame>
-		
-        
-    </ContentPage.Content>
+
+
+	</ContentPage.Content>
 </ContentPage>

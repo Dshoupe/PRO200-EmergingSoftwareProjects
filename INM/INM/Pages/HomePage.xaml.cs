@@ -3,10 +3,6 @@ using System;
 using INM.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Timers;
-using System.Speech.Recognition;
-using System.Text;
-using System.Diagnostics;
 
 namespace INM.Pages
 {
@@ -77,7 +73,7 @@ namespace INM.Pages
 					if (db.CreateRecording(ar))
 					{
 						Android.Util.Log.WriteLine(Android.Util.LogPriority.Info, "Audio Save", $"Audio saved for user {user.ID}");
-					} 
+					}
 					else
 					{
 						DisplayAlert("", "Did not save audio", "OK");
@@ -85,7 +81,7 @@ namespace INM.Pages
 				}
 			}
 		}
-		
+
 		private void ContactsToolbarItem_Clicked(object sender, EventArgs e)
 		{
 			StopRecording();

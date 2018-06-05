@@ -14,7 +14,7 @@
 	<ContentPage.Content>
 		<Frame BorderColor="Black"
 			   Padding="4"
-			   Margin="30">
+			   Margin="15">
 			<StackLayout
 				BackgroundColor="Snow">
 				<Label x:Name="timeLabel" Text=""
