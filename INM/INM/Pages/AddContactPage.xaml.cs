@@ -2,11 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace INM.Pages
 {
@@ -38,18 +34,26 @@ namespace INM.Pages
                     {
                         if (this.user.Contacts.Where(x => x.ID == user.ID).ToList().Count == 0 && this.user.ID != user.ID)
                         {
+                            StackLayout sl = new StackLayout {Orientation = StackOrientation.Horizontal};
                             Contacts.Add(user);
                             Label l = new Label
                             {
                                 Text = $"{user.FirstName} {user.LastName}",
+                                FontSize = 15,
+                                Margin = new Thickness(0, 3, 0, 0)
                             };
-                            ContactList.Children.Add(l);
+                            sl.Children.Add(l);
                             Button b = new Button
                             {
-                                Text = "ADD"
+                                Text = "ADD",
+                                FontSize = 9,
+                                WidthRequest = 60,
+                                HeightRequest = 30,
+                                HorizontalOptions = LayoutOptions.End
                             };
                             b.Clicked += B_Clicked;
-                            ContactList.Children.Add(b);
+                            sl.Children.Add(b);
+                            ContactList.Children.Add(sl);
                         }
                     }
                     //if no users are added. this will hit when only contacts already in the contact list and the user are found.
@@ -68,7 +72,7 @@ namespace INM.Pages
 
         private void B_Clicked(object sender, EventArgs e)
         {
-            int index = ContactList.Children.IndexOf((Button)sender)-1;
+            int index = ContactList.Children.IndexOf(((StackLayout)((Button)sender).Parent));
             if (!user.Contacts.Contains(Contacts[index]))
             {
                 bool addSuccessful = false;
@@ -90,6 +94,7 @@ namespace INM.Pages
                 }
                 string retMsg = addSuccessful ? "User Added" : "Something went wrong";
                 DisplayAlert("", retMsg, "Okay");
+                ((StackLayout)((Button)sender).Parent).Children.Clear();
             }
             else
             {
@@ -100,12 +105,6 @@ namespace INM.Pages
         private void SearchBarEntry_Focused(object sender, FocusEventArgs e)
         {
             SearchBarEntry.Text = "";
-        }
-
-        private void SearchBarEntry_Unfocused(object sender, FocusEventArgs e)
-        {
-            SearchBarEntry.Text = "Search for People";
-
         }
     
 		private void HomeToolbarItem_Clicked(object sender, EventArgs e)
@@ -132,6 +131,12 @@ namespace INM.Pages
 		{
 			Navigation.PopToRootAsync();
 		}
-	}
+
+        private void DoneButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+            Navigation.PushAsync(new ContactsPage(user));
+        }
+    }
 }
 

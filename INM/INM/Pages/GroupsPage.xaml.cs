@@ -16,7 +16,7 @@ namespace INM.Pages
 		User user;
 		public GroupsPage (User user)
 		{
-			InitializeComponent ();
+			InitializeComponent();
 			this.user = user;
             DisplayGroups();
 		}
@@ -40,11 +40,23 @@ namespace INM.Pages
 			{
                 foreach (Group g in user.Groups)
                 {
+                    StackLayout sl = new StackLayout{ Orientation=StackOrientation.Horizontal};
                     Label l = new Label
                     {
                         Text = g.GroupName
                     };
-                    GroupsStackLayout.Children.Add(l);
+                    sl.Children.Add(l);
+                    Image i = new Image() { WidthRequest = 20, HeightRequest = 20 };
+                    i.Source = "redX.png";
+                    i.ClassId = $"{g.ID}";
+                    TapGestureRecognizer g2 = new TapGestureRecognizer();
+                    g2.Tapped += DeleteGroupButton_Clicked;
+                    i.Margin = 0;
+                    i.GestureRecognizers.Add(g2);
+                    sl.Children.Add(l);
+                    sl.Children.Add(i);
+                    sl.Children.Add(i);
+                    GroupsStackLayout.Children.Add(sl);
                 }
             }
 		}
@@ -89,7 +101,20 @@ namespace INM.Pages
     
 		private void CreateGroupButton_Clicked(object sender, EventArgs e)
 		{
-
+			// create a new 'AddToGroupPage'
+			Navigation.PushAsync(new AddToGroupPage(user));
 		}
-	}
+        private void DeleteGroupButton_Clicked(object sender, EventArgs e)
+        {
+            Label l = ((Label)((StackLayout)((Image)sender).Parent).Children[0]);
+            using (var db = new Persistence.SQLiteDb())
+            {
+                Group group = db.GetGroupByName(l.Text);
+                db.DeleteGroup(group.ID);
+                DisplayAlert("","Group Deleted","Okay");
+                Navigation.PopAsync();
+                Navigation.PushAsync(new GroupsPage(user));
+            };
+        }
+    }
 }
