@@ -19,7 +19,9 @@ namespace INM.Pages
 			InitializeComponent();
 			this.user = user;
             DisplayGroups();
-		}
+            DisplayGroupMemberships();
+
+        }
 
 		private void DisplayGroups()
 		{
@@ -60,6 +62,41 @@ namespace INM.Pages
                 }
             }
 		}
+
+        public void DisplayGroupMemberships()
+        {
+            Label label = new Label { Text = "Groups to which you belong" };
+            GroupsStackLayout.Children.Add(label);
+            List<Group> groups = new List<Group>();
+            using (var sq = new Persistence.SQLiteDb())
+            {
+                groups = sq.GetAllGroups().Where(x => x.LeadUserId != user.ID).ToList();
+            }
+            if (groups.Count == 0)
+            {
+                Label noGroupsLabel = new Label
+                {
+                    Text = "You have belong to no groups",
+                    FontSize = 10.0
+                };
+                GroupsStackLayout.Children.Add(noGroupsLabel);
+            }
+            else
+            {
+                foreach (Group g in groups) 
+                {
+                    StackLayout sl = new StackLayout { Orientation = StackOrientation.Horizontal };
+                    Label l = new Label
+                    {
+                        Text = g.GroupName
+                    };
+                    sl.Children.Add(l);
+                    
+                    sl.Children.Add(l);
+                    GroupsStackLayout.Children.Add(sl);
+                }
+            }
+        }
 
 		private void HomeToolbarItem_Clicked(object sender, EventArgs e)
 		{

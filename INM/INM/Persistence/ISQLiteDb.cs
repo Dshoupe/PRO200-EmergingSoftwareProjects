@@ -19,6 +19,7 @@ namespace INM.Persistence
 
 		List<User> GetUsers();
 		List<Group> GetUserGroups(int userId);
+		List<Group> GetAllGroups();
 		List<AudioRecord> GetUserAudioRecordings(int userId);
 		User GetUserByUsername(string userName);
 		User GetUserByEmail(string email);
@@ -31,7 +32,7 @@ namespace INM.Persistence
         bool DeleteRecording(AudioRecord ar);
         bool CreateGroupAudioRecord(GroupAudioRecord gar);
         List<GroupAudioRecord> GetGroupAudioRecordByGroup(int groupID);
-        List<Group> GetGroupbyUseerID(int UserID);
+        List<Group> GetGroupbyUserID(int UserID);
         AudioRecord GetAudioByID(int ID);
         bool DeleteGroupAudioRecordByAudioID(int id);
         List<GroupAudioRecord> GetGroupAudioRecords();

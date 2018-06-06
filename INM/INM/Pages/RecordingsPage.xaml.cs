@@ -37,7 +37,7 @@ namespace INM.Pages
             }
             if (p.Items.Count() == 0)
             {
-                p.Items.Add("You have to no groups");
+                p.Items.Add("You are not currently in any groups");
             }
             p.SelectedIndex = 0;
 
@@ -122,14 +122,16 @@ namespace INM.Pages
                 l2.FontSize = 10;
                 l2.ClassId = recording.Title;
 
-                Button b = new Button { Text = "Share" };
-                b.Clicked += B_Clicked;
-                g3.Tapped += ChangeRecordingName;
+                
 
                 sl.Children.Add(l);
                 sl.Children.Add(l2);
                 sl.Children.Add(i);
+                Button b = new Button { Text = "Share" };
+                b.Clicked += B_Clicked;
+                g3.Tapped += ChangeRecordingName;
                 sl.Children.Add(b);
+
                 f.Content = sl;
                 RecordingPane.Children.Add(sl);
             }
@@ -141,7 +143,7 @@ namespace INM.Pages
             List<Group> groups = new List<Group>();
             using (var db = new Persistence.SQLiteDb())
             {
-                groups = db.GetGroupbyUseerID(user.ID);
+                groups = db.GetGroupbyUserID(user.ID);
             }
             foreach (Group group in groups)
             {
@@ -194,26 +196,35 @@ namespace INM.Pages
             int index = RecordingPane.Children.IndexOf((StackLayout)((Button)sender).Parent);
             Models.AudioRecord record = user.Recordings[index];
             string groupName = ((Picker)RecordingsStackLayout.Children[2]).SelectedItem.ToString();
-            Group g;
-            int count = 0;
-            using (var db = new Persistence.SQLiteDb())
+            if (user.Groups.Where(x => x.GroupName == groupName).ToList().Count() > 0)
             {
-                g = db.GetGroupByName(groupName);
-                count = db.GetGroupAudioRecords().Count();
+
+                Group g;
+                int count = 0;
+                using (var db = new Persistence.SQLiteDb())
+                {
+                    g = db.GetGroupByName(groupName);
+                    count = db.GetGroupAudioRecords().Count();
+                }
+                GroupAudioRecord gar = new GroupAudioRecord
+                {
+                    AudioRecordId = record.ID,
+                    GroupId = g.ID,
+                    IsGroupAudioCreator = true
+                };
+                bool hasShared = false;
+                using (var db = new Persistence.SQLiteDb())
+                {
+                    hasShared = db.CreateGroupAudioRecord(gar);
+                }
+                string retVal = hasShared ? "Audio shared" : "Something went wrong";
+                DisplayAlert("", retVal, "Okay");
             }
-            GroupAudioRecord gar = new GroupAudioRecord
+            else
             {
-                AudioRecordId = record.ID,
-                GroupId = g.ID,
-                IsGroupAudioCreator = true
-            };
-            bool hasShared = false;
-            using (var db = new Persistence.SQLiteDb())
-            {
-                hasShared = db.CreateGroupAudioRecord(gar);
+                DisplayAlert("","That group doesn't exist", "Okay");
             }
-            string retVal = hasShared ? "Audio shared" : "Something went wrong";
-            DisplayAlert("", retVal, "Okay");
+            
         }
 
         private void ChangeRecordingName(object sender, EventArgs e)

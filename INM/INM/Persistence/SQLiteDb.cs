@@ -453,7 +453,7 @@ namespace INM.Persistence
             
         }
 
-        public List<Group> GetGroupbyUseerID(int UserID)
+        public List<Group> GetGroupbyUserID(int UserID)
         {
             var table = _DbConnection.Table<GroupUser>().Where(x => x.UserId == UserID);
             List<Group> list = new List<Group>();
@@ -464,6 +464,10 @@ namespace INM.Persistence
             return list;
         }
 
+        public List<Group> GetAllGroups()
+		{
+			return _DbConnection.Table<Group>().ToList();
+		}
 
         public List<GroupAudioRecord> GetGroupAudioRecords()
         {
