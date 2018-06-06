@@ -65,7 +65,7 @@ namespace INM.Pages
 
         public void DisplayGroupMemberships()
         {
-            Label label = new Label { Text = "Groups to which you belong" };
+            Label label = new Label { Text = "Outside groups you belong to" };
             GroupsStackLayout.Children.Add(label);
             List<Group> groups = new List<Group>();
             using (var sq = new Persistence.SQLiteDb())
@@ -76,7 +76,7 @@ namespace INM.Pages
             {
                 Label noGroupsLabel = new Label
                 {
-                    Text = "You belong to no groups",
+                    Text = "You belong to no outside groups",
                     FontSize = 10.0
                 };
                 GroupsStackLayout.Children.Add(noGroupsLabel);

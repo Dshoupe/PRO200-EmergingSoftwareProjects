@@ -6,7 +6,7 @@ namespace INM.Models
 	[Table("AudioRecord")]
 	public class AudioRecord
 	{
-        [PrimaryKey]
+        [PrimaryKey, AutoIncrement]
 		public int ID { get; set; }
 
 		public int CreatorId { get; set; }
