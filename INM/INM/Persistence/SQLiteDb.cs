@@ -23,7 +23,7 @@ namespace INM.Persistence
 
             #region CreateDbTables
             _DbConnection.CreateTable<User>(); // users
-            _DbConnection.CreateTable<UserUser>(); // contacts
+            _DbConnection.CreateTable<UserUser>(SQLite.CreateFlags.AutoIncPK); // contacts
             _DbConnection.CreateTable<Group>(); // groups
             _DbConnection.CreateTable<GroupUser>(); // groups with users
             _DbConnection.CreateTable<GroupAudioRecord>(SQLite.CreateFlags.AutoIncPK); // groups with audio records
