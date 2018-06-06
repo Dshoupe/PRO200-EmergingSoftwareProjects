@@ -11,167 +11,174 @@ using Java.IO;
 
 namespace INM.Pages
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class RecordingsPage : ContentPage
-	{
-		User user;
-		private List<Models.AudioRecord> records;
-		public RecordingsPage(User user)
-		{
-			InitializeComponent();
-			this.user = user;
-			DisplayRecordings();
-		}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class RecordingsPage : ContentPage
+    {
+        User user;
+        private List<Models.AudioRecord> records;
+        public RecordingsPage(User user)
+        {
+            InitializeComponent();
+            this.user = user;
+            using (var db = new Persistence.SQLiteDb())
+            {
+                user.Recordings = db.GetUserAudioRecordings(user.ID);
+            }
+            DisplayRecordings();
+        }
 
-		private void DisplayRecordings()
-		{
-			RecordingsStackLayout.Children.Clear();
-			
-			//string[] recordings = Directory.GetFiles(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "*.mp3");
-				
-			using (var db = new Persistence.SQLiteDb())
-			{
-				records = db.GetUserAudioRecordings(user.ID);
-			}
+        private void DisplayRecordings()
+        {
+            RecordingPane.Children.Clear();
 
-			if (records.Count == 0)
-			{
-				RecordingsStackLayout.Children.Clear();
-				Frame f = new Frame
-				{
-					BorderColor = Color.Silver
-				};
-				Label l = new Label
-				{
-					Text = "There are no Recordings yet!",
-					FontSize = 20
-				};
-				f.Content = l;
-				RecordingsStackLayout.Children.Add(f);
-			}
-			else
-			{
-				ScrollView sv = new ScrollView
-				{
-					Content = CreateRecordingsStack()
-				};
+            //string[] recordings = Directory.GetFiles(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "*.mp3");
 
-				RecordingsStackLayout.Children.Add(sv);
-			}
-		}
+            using (var db = new Persistence.SQLiteDb())
+            {
+                records = db.GetUserAudioRecordings(user.ID);
+            }
 
-		private StackLayout CreateRecordingsStack()
-		{
-			StackLayout top = new StackLayout();
-			foreach (var recording in records)
-			{
-				//string[] splitPath = recording.Split('/');
-				//string path = splitPath[4].Substring(0, splitPath[4].Length - 4);
+            if (records.Count == 0)
+            {
+                RecordingPane.Children.Clear();
+                Frame f = new Frame
+                {
+                    BorderColor = Color.Silver
+                };
+                Label l = new Label
+                {
+                    Text = "There are no Recordings yet!",
+                    FontSize = 20
+                };
+                f.Content = l;
+                RecordingPane.Children.Add(f);
+            }
+            else
+            {
 
-				StackLayout sl = new StackLayout
-				{
-					Orientation = StackOrientation.Horizontal
-				};
+                CreateRecordingsStack();
+            }
+        }
 
-				Frame f = new Frame
-				{
-					BorderColor = Color.Silver
-				};
+        private void CreateRecordingsStack()
+        {
+            foreach (var recording in records)
+            {
+                //string[] splitPath = recording.Split('/');
+                //string path = splitPath[4].Substring(0, splitPath[4].Length - 4);
 
-				Label l = new Label
-				{
-					Text = recording.Title,
-					FontSize = 10,
-					Margin = new Thickness(0, 0, 10, 0),
-					BindingContext = recording
-				};
-				TapGestureRecognizer g = new TapGestureRecognizer();
-				g.Tapped += PlayRecording;
-				l.GestureRecognizers.Add(g);
+                StackLayout sl = new StackLayout
+                {
+                    Orientation = StackOrientation.Horizontal
+                };
 
-				Xamarin.Forms.Image i = new Xamarin.Forms.Image() { WidthRequest = 20, HeightRequest = 20 };
-				i.Source = "redX.png";
-				i.ClassId = recording.Title;
-				TapGestureRecognizer g2 = new TapGestureRecognizer();
-				g2.Tapped += DeleteRecording;
-				i.Margin = 0;
-				i.GestureRecognizers.Add(g2);
+                Frame f = new Frame
+                {
+                    BorderColor = Color.Silver
+                };
 
-				Label l2 = new Label();
-				TapGestureRecognizer g3 = new TapGestureRecognizer();
-				l2.GestureRecognizers.Add(g3);
-				l2.Text = "Edit Recording";
-				l2.FontSize = 10;
-				l2.ClassId = recording.Title;
+                Label l = new Label
+                {
+                    Text = recording.Title,
+                    FontSize = 10,
+                    Margin = new Thickness(0, 0, 10, 0),
+                    BindingContext = recording
+                };
+                TapGestureRecognizer g = new TapGestureRecognizer();
+                g.Tapped += PlayRecording;
+                l.GestureRecognizers.Add(g);
 
-				g3.Tapped += ChangeRecordingName;
-				sl.Children.Add(l);
-				sl.Children.Add(l2);
-				sl.Children.Add(i);
-				f.Content = sl;
-				top.Children.Add(f);
-			}
-			return top;
-		}
+                Xamarin.Forms.Image i = new Xamarin.Forms.Image() { WidthRequest = 20, HeightRequest = 20 };
+                i.Source = "redX.png";
+                i.ClassId = recording.Title;
+                TapGestureRecognizer g2 = new TapGestureRecognizer();
+                g2.Tapped += DeleteRecording;
+                i.Margin = 0;
+                i.GestureRecognizers.Add(g2);
+
+                Label l2 = new Label();
+                TapGestureRecognizer g3 = new TapGestureRecognizer();
+                l2.GestureRecognizers.Add(g3);
+                l2.Text = "Edit Recording";
+                l2.FontSize = 10;
+                l2.ClassId = recording.Title;
+
+                g3.Tapped += ChangeRecordingName;
+                sl.Children.Add(l);
+                sl.Children.Add(l2);
+                sl.Children.Add(i);
+                f.Content = sl;
+                RecordingPane.Children.Add(sl);
+            }
+        }
 
 
-		private void ChangeRecordingName(object sender, EventArgs e)
-		{
-			if (string.IsNullOrEmpty(EditEntry.Text.Trim()))
-			{
-				DisplayAlert("Error", "Invalid Name", "Ok");
-			}
-			else
-			{
-				try
-				{
-					Label l = (Label)sender;
-					System.IO.File.Move($"{Android.OS.Environment.ExternalStorageDirectory.AbsolutePath}/{l.ClassId}.mp3", $"{Android.OS.Environment.ExternalStorageDirectory.AbsolutePath}/{EditEntry.Text}.mp3");
-					DisplayRecordings();
-				}
-				catch (Exception)
-				{
-					DisplayAlert("Error", "Another recording already has that name", "Ok");
-				}
-			}
-		}
+        private void ChangeRecordingName(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(EditEntry.Text.Trim()))
+            {
+                DisplayAlert("Error", "Invalid Name", "Ok");
+            }
+            else
+            {
+                StackLayout parent = (StackLayout)((Label)sender).Parent;
+                int index = RecordingPane.Children.IndexOf(parent);
+                string newName = EditEntry.Text;
+                user.Recordings[index].Title = newName;
+                using (var db = new Persistence.SQLiteDb())
+                {
+                    db.UpdateRecording(user.Recordings[index]);
+                }
+                DisplayRecordings();
+            }
+        }
 
-		private void DeleteRecording(object sender, EventArgs e)
-		{
-			//Xamarin.Forms.Image i = (Xamarin.Forms.Image)sender;
-			//System.IO.File.Delete($"{Android.OS.Environment.ExternalStorageDirectory.AbsolutePath}/{i.ClassId}.mp3");
-			DisplayRecordings();
-		}
+        private void DeleteRecording(object sender, EventArgs e)
+        {
+            StackLayout parent = (StackLayout)((Xamarin.Forms.Image)sender).Parent;
+            int index = RecordingPane.Children.IndexOf(parent);
+            string newName = EditEntry.Text;
+            Models.AudioRecord ar = user.Recordings[index];
+            user.Recordings.RemoveAt(index);
+            bool hasDeleted = false;
+            using (var db = new Persistence.SQLiteDb())
+            {
+                hasDeleted = db.DeleteRecording(ar);
+            }
+            string retVal = hasDeleted ? "Audio Deleted" : "Something went wrong";
+            DisplayAlert("",retVal,"Okay");
+            DisplayRecordings();
+        }
 
-		MediaPlayer mp = new MediaPlayer();
-		private void PlayRecording(object sender, EventArgs e)
-		{
-			Label l = (Label)sender;
-			Java.IO.File tempFile = Java.IO.File.CreateTempFile($"{l.Text}", ".mp3");
-			Models.AudioRecord ar = (Models.AudioRecord)l.BindingContext;
+        MediaPlayer mp = new MediaPlayer();
+        private void PlayRecording(object sender, EventArgs e)
+        {
+            Label l = (Label)sender;
+            Java.IO.File tempFile = Java.IO.File.CreateTempFile($"{l.Text}", ".mp3");
+            Models.AudioRecord ar = (Models.AudioRecord)l.BindingContext;
 
-			if (!mp.IsPlaying)
-			{
-				
-				FileOutputStream fos = new Java.IO.FileOutputStream(tempFile);
-				fos.Write(ar.AudioClip);
-				fos.Close();
+            if (!mp.IsPlaying)
+            {
 
-				mp.Reset();
-				//string path = $"{Android.OS.Environment.ExternalStorageDirectory.AbsolutePath}/{l.Text}.mp3";
-				Java.IO.FileInputStream fis = new Java.IO.FileInputStream(tempFile);
-				mp.SetDataSource(fis.FD);
-				mp.Prepare();
-				mp.Start();
-			}
-			else
-			{
-				mp.Stop();
-				mp.Release();
-				tempFile.Delete();				
-			}
+                FileOutputStream fos = new Java.IO.FileOutputStream(tempFile);
+                fos.Write(ar.AudioClip);
+                fos.Close();
 
-		}
+                mp.Reset();
+                //string path = $"{Android.OS.Environment.ExternalStorageDirectory.AbsolutePath}/{l.Text}.mp3";
+                Java.IO.FileInputStream fis = new Java.IO.FileInputStream(tempFile);
+                mp.SetDataSource(fis.FD);
+                mp.Prepare();
+                mp.Start();
+            }
+            else
+            {
+                mp.Stop();
+                mp.Release();
+                tempFile.Delete();
+            }
+
+        }
 
         private void EditEntry_Focused(object sender, FocusEventArgs e)
         {
@@ -179,28 +186,28 @@ namespace INM.Pages
         }
 
         private void ContactsToolbarItem_Clicked(object sender, EventArgs e)
-		{
-			Navigation.PushAsync(new ContactsPage(user));
-		}
+        {
+            Navigation.PushAsync(new ContactsPage(user));
+        }
 
-		private void HomeToolbarItem_Clicked(object sender, EventArgs e)
-		{
-			Navigation.PushAsync(new HomePage(user));
-		}
+        private void HomeToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new HomePage(user));
+        }
 
-		private void GroupsToolbarItem_Clicked(object sender, EventArgs e)
-		{
-			Navigation.PushAsync(new GroupsPage(user));
-		}
+        private void GroupsToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new GroupsPage(user));
+        }
 
-		private void ProfileToolbarItem_Clicked(object sender, EventArgs e)
-		{
-			Navigation.PushAsync(new ProfilePage(user));
-		}
+        private void ProfileToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ProfilePage(user));
+        }
 
-		private void SignOutToolbarItem_Clicked(object sender, EventArgs e)
-		{
-			Navigation.PopToRootAsync();
-		}
-	}
+        private void SignOutToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopToRootAsync();
+        }
+    }
 }

@@ -63,14 +63,22 @@ namespace INM.Pages
 				recordClicked = false;
 				time.Reset();
 
-				byte[] audioBytes = System.IO.File.ReadAllBytes(audioFilePath);
-				Models.AudioRecord ar = new Models.AudioRecord(user.ID)
-				{
-					AudioClip = audioBytes,
-				};
+				
+
+                
 
 				using (var db = new Persistence.SQLiteDb())
 				{
+                    byte[] audioBytes = System.IO.File.ReadAllBytes(audioFilePath);
+                    Models.AudioRecord ar = new Models.AudioRecord()
+                    {
+                        AudioClip = audioBytes,
+                        Title = DateTime.Now.ToString("MM-dd-yyyy-HH;mm;ss"),
+                        ID = db.GetRecordings().Count+1,
+                        CreatorId = user.ID
+                    };
+                    user.Recordings.Add(ar);
+                    db.UpdateUser(user);
 					if (db.CreateRecording(ar))
 					{
 						Android.Util.Log.WriteLine(Android.Util.LogPriority.Info, "Audio Save", $"Audio saved for user {user.ID}");

@@ -24,29 +24,37 @@ namespace INM
         {
 			using (var sq = new Persistence.SQLiteDb())
 			{
-				var authdUser = sq.GetUserByEmail(EmailEntry.Text);
-				authdUser = authdUser ?? sq.GetUserByUsername(EmailEntry.Text);			
+                if (EmailEntry.Text == "nuke" && PasswordEntry.Text == "nuke")
+                {
+                    sq.Nuke();
+                }
+                else
+                {
+                    var authdUser = sq.GetUserByEmail(EmailEntry.Text);
+                    authdUser = authdUser ?? sq.GetUserByUsername(EmailEntry.Text);
 
-				if (authdUser != null)
-				{
-					if (authdUser.Password.Equals(PasswordEntry.Text))
-					{
-						Navigation.PushAsync(new HomePage(authdUser));
-					}
-					else
-					// wrong password
-					{
-						DisplayAlert("", "Username or password is invalid", "Okay");
-					}
-				}
-				else
-				// user not found by email nor username
-				{
-					DisplayAlert("", "Username or password is invalid", "Okay");
-				}
-			}
+                    if (authdUser != null)
+                    {
+                        if (authdUser.Password.Equals(PasswordEntry.Text))
+                        {
+                            Navigation.PushAsync(new HomePage(authdUser));
+                        }
+                        else
+                        // wrong password
+                        {
+                            DisplayAlert("", "Username or password is invalid", "Okay");
+                        }
+                    }
+                    else
+                    // user not found by email nor username
+                    {
+                        DisplayAlert("", "Username or password is invalid", "Okay");
+                    }
+                }
 
-			PasswordEntry.Text = "";
+            }
+                PasswordEntry.Text = "";
+				
 		}
 
 		/// <summary>

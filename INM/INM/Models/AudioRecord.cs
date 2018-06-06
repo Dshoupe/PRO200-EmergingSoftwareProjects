@@ -6,10 +6,10 @@ namespace INM.Models
 	[Table("AudioRecord")]
 	public class AudioRecord
 	{
+        [PrimaryKey]
 		public int ID { get; set; }
 
-		[ForeignKey(typeof(User))]
-		public int CreatorId { get; }
+		public int CreatorId { get; set; }
 
 
 		public string Title { get; set; }

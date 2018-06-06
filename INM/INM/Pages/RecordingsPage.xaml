@@ -21,7 +21,10 @@
                     <Entry x:Name="EditEntry" Text="New Name" Focused="EditEntry_Focused"/>
 					<StackLayout x:Name="RecordingsStackLayout">
 						<Label Text="Recordings" FontSize="30" HorizontalOptions="CenterAndExpand" />
-					</StackLayout>
+                        <ScrollView>
+                            <StackLayout x:Name="RecordingPane"/>
+                        </ScrollView>
+                    </StackLayout>
 				</StackLayout>
 			</ScrollView>
 		</Frame>
