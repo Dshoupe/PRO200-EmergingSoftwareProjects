@@ -11,7 +11,6 @@ namespace INM.Models
 
 		public int CreatorId { get; set; }
 
-
 		public string Title { get; set; }
 
 		public byte[] AudioClip { get; set; }
