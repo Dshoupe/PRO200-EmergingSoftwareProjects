@@ -76,7 +76,7 @@ namespace INM.Pages
             {
                 Label noGroupsLabel = new Label
                 {
-                    Text = "You have belong to no groups",
+                    Text = "You belong to no groups",
                     FontSize = 10.0
                 };
                 GroupsStackLayout.Children.Add(noGroupsLabel);
