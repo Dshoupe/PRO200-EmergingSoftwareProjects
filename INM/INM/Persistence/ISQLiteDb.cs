@@ -28,8 +28,12 @@ namespace INM.Persistence
 		bool CreateGroupUser(GroupUser gu);
 		void Nuke();
         List<AudioRecord> GetRecordings();
-
         bool DeleteRecording(AudioRecord ar);
-
+        bool CreateGroupAudioRecord(GroupAudioRecord gar);
+        List<GroupAudioRecord> GetGroupAudioRecordByGroup(int groupID);
+        List<Group> GetGroupbyUseerID(int UserID);
+        AudioRecord GetAudioByID(int ID);
+        bool DeleteGroupAudioRecordByAudioID(int id);
+        List<GroupAudioRecord> GetGroupAudioRecords();
     }
 }

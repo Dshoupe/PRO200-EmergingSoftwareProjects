@@ -23,7 +23,25 @@ namespace INM.Pages
             using (var db = new Persistence.SQLiteDb())
             {
                 user.Recordings = db.GetUserAudioRecordings(user.ID);
+                user.Groups = db.GetUserGroups(user.ID);
             }
+
+            Picker p = new Picker
+            {
+                WidthRequest = 50,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
+            foreach (Group g in user.Groups)
+            {
+                p.Items.Add(g.GroupName);
+            }
+            if (p.Items.Count() == 0)
+            {
+                p.Items.Add("You have to no groups");
+            }
+            p.SelectedIndex = 0;
+
+            RecordingsStackLayout.Children.Add(p);
             DisplayRecordings();
         }
 
@@ -58,6 +76,7 @@ namespace INM.Pages
 
                 CreateRecordingsStack();
             }
+                CreateGroupRecordingsStack();
         }
 
         private void CreateRecordingsStack()
@@ -103,15 +122,99 @@ namespace INM.Pages
                 l2.FontSize = 10;
                 l2.ClassId = recording.Title;
 
+                Button b = new Button { Text = "Share" };
+                b.Clicked += B_Clicked;
                 g3.Tapped += ChangeRecordingName;
+
                 sl.Children.Add(l);
                 sl.Children.Add(l2);
                 sl.Children.Add(i);
+                sl.Children.Add(b);
                 f.Content = sl;
                 RecordingPane.Children.Add(sl);
             }
         }
 
+        private void CreateGroupRecordingsStack()
+        {
+            RecordingPane.Children.Add(new Label {Text = "Recordings Shared With You" });
+            List<Group> groups = new List<Group>();
+            using (var db = new Persistence.SQLiteDb())
+            {
+                groups = db.GetGroupbyUseerID(user.ID);
+            }
+            foreach (Group group in groups)
+            {
+                List<GroupAudioRecord> gar;
+                using (var db = new Persistence.SQLiteDb())
+                {
+                    gar = db.GetGroupAudioRecordByGroup(group.ID);
+                }
+                foreach (GroupAudioRecord groupAudio in gar)
+                {
+                    //string[] splitPath = recording.Split('/');
+                    //string path = splitPath[4].Substring(0, splitPath[4].Length - 4);
+                    Models.AudioRecord recording;
+                    using (var db = new Persistence.SQLiteDb())
+                    {
+                        recording = db.GetAudioByID(groupAudio.AudioRecordId);
+                    }
+                    if (recording.CreatorId != user.ID)
+                    {
+                        StackLayout sl = new StackLayout
+                        {
+                            Orientation = StackOrientation.Horizontal
+                        };
+
+                        Frame f = new Frame
+                        {
+                            BorderColor = Color.Silver
+                        };
+
+                        Label l = new Label
+                        {
+                            Text = recording.Title,
+                            FontSize = 10,
+                            Margin = new Thickness(0, 0, 10, 0),
+                            BindingContext = recording
+                        };
+                        TapGestureRecognizer g = new TapGestureRecognizer();
+                        g.Tapped += PlayRecording;
+                        l.GestureRecognizers.Add(g);
+                        sl.Children.Add(l);
+                        f.Content = sl;
+                        RecordingPane.Children.Add(sl);
+                    }
+                }
+            }
+        }
+        private void B_Clicked(object sender, EventArgs e)
+        {
+            //get recordID, groupID and create list on 
+            int index = RecordingPane.Children.IndexOf((StackLayout)((Button)sender).Parent);
+            Models.AudioRecord record = user.Recordings[index];
+            string groupName = ((Picker)RecordingsStackLayout.Children[2]).SelectedItem.ToString();
+            Group g;
+            int count = 0;
+            using (var db = new Persistence.SQLiteDb())
+            {
+                g = db.GetGroupByName(groupName);
+                count = db.GetGroupAudioRecords().Count();
+            }
+            GroupAudioRecord gar = new GroupAudioRecord
+            {
+                AudioRecordId = record.ID,
+                GroupId = g.ID,
+                IsGroupAudioCreator = true
+            };
+            bool hasShared = false;
+            using (var db = new Persistence.SQLiteDb())
+            {
+                hasShared = db.CreateGroupAudioRecord(gar);
+            }
+            string retVal = hasShared ? "Audio shared" : "Something went wrong";
+            DisplayAlert("", retVal, "Okay");
+        }
 
         private void ChangeRecordingName(object sender, EventArgs e)
         {
@@ -143,10 +246,11 @@ namespace INM.Pages
             bool hasDeleted = false;
             using (var db = new Persistence.SQLiteDb())
             {
+                db.DeleteGroupAudioRecordByAudioID(ar.ID);
                 hasDeleted = db.DeleteRecording(ar);
             }
             string retVal = hasDeleted ? "Audio Deleted" : "Something went wrong";
-            DisplayAlert("",retVal,"Okay");
+            DisplayAlert("", retVal, "Okay");
             DisplayRecordings();
         }
 

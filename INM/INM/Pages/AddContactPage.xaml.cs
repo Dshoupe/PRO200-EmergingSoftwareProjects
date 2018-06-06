@@ -84,7 +84,7 @@ namespace INM.Pages
                         addSuccessful = sq.CreateContact(user.ID, Contacts[index].ID);
                         sq.UpdateUser(user);
                         var records = sq.GetContact(user.ID, Contacts[index].ID);
-                        DisplayAlert("", $"{records.ID} {records.PrimaryUserId} {records.ContactUserId}", "Ok");
+                        
                     }
                     else
                     {

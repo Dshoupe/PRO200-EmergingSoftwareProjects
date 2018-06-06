@@ -26,7 +26,7 @@ namespace INM.Persistence
             _DbConnection.CreateTable<UserUser>(); // contacts
             _DbConnection.CreateTable<Group>(); // groups
             _DbConnection.CreateTable<GroupUser>(); // groups with users
-            _DbConnection.CreateTable<GroupAudioRecord>(); // groups with audio records
+            _DbConnection.CreateTable<GroupAudioRecord>(SQLite.CreateFlags.AutoIncPK); // groups with audio records
             _DbConnection.CreateTable<AudioRecord>(); // audio data
             #endregion
         }
@@ -146,6 +146,20 @@ namespace INM.Persistence
             try
             {
                 _DbConnection.Delete<AudioRecord>(ar.ID);
+                return true;
+            }
+            catch (System.InvalidOperationException ioe)
+            {
+                System.Console.WriteLine(ioe.StackTrace);
+                return false;
+            }
+        }
+
+        public bool CreateGroupAudioRecord(GroupAudioRecord gar)
+        {
+            try
+            {
+                _DbConnection.Insert(gar);
                 return true;
             }
             catch (System.InvalidOperationException ioe)
@@ -402,6 +416,60 @@ namespace INM.Persistence
                 System.Console.WriteLine(ioe.StackTrace);
                 return false;
             }
+        }
+
+        public List<GroupAudioRecord> GetGroupAudioRecordByGroup(int groupID)
+        {
+            var table = _DbConnection.Table<GroupAudioRecord>();
+            List<GroupAudioRecord> list = table.ToList();
+            return list.Where(x => x.GroupId == groupID).ToList();
+        }
+
+        public AudioRecord GetAudioByID(int ID)
+        {
+            return _DbConnection.Table<AudioRecord>().Where(x => x.ID == ID).First();
+        }
+
+        public bool DeleteGroupAudioRecordByAudioID(int id)
+        {
+            try
+            {
+                List<GroupAudioRecord> allRecords = _DbConnection.Table<GroupAudioRecord>().ToList();
+                List<GroupAudioRecord> records = _DbConnection.Table<GroupAudioRecord>()
+                    .Where(x => x.AudioRecordId == id).ToList();
+                foreach (GroupAudioRecord gar in records)
+                {
+                    allRecords.Remove(gar);
+                }
+                _DbConnection.DropTable<GroupAudioRecord>();
+                _DbConnection.CreateTable<GroupAudioRecord>(SQLite.CreateFlags.AutoIncPK); // groups with audio records
+                return true;
+            }
+            catch (System.InvalidOperationException ioe)
+            {
+                System.Console.WriteLine(ioe.StackTrace);
+                return false;
+            }
+            
+        }
+
+        public List<Group> GetGroupbyUseerID(int UserID)
+        {
+            var table = _DbConnection.Table<GroupUser>().Where(x => x.UserId == UserID);
+            List<Group> list = new List<Group>();
+            foreach (GroupUser gu in table)
+            {
+                list = _DbConnection.Table<Group>().Where(y=>y.ID == gu.GroupId).ToList();
+            }
+            return list;
+        }
+
+
+        public List<GroupAudioRecord> GetGroupAudioRecords()
+        {
+            var table = _DbConnection.Table<GroupAudioRecord>();
+            
+            return table.ToList();
         }
     }
 }
